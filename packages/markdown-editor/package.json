@@ -4,6 +4,7 @@
   "description": "MarkdownEditor for Qiita and Kobito",
   "main": "dist/bundle.js",
   "scripts": {
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
