@@ -1,0 +1,63 @@
+{
+  "databases": [
+    {
+      "namespace": "Kaita",
+      "type": "indexedDb",
+      "collections": [
+        {
+          "name": "items",
+          "params": {
+            "_id?"  : "string",
+            "body"  : "string",
+            "title" : "string",
+            "tags"  : "Tag[]",
+            "teamId": "string",
+            "syncedItemId?"     : "string",
+            "created_at?"       : "number",
+            "local_updated_at?" : "number",
+            "remote_updated_at?": "number",
+            "synced_at?"        : "number"
+          }
+        },
+        {
+          "name": "teams",
+          "params":{
+            "_id?": "string",
+            "id": "string",
+            "name": "string"
+          }
+        },
+        {
+          "name": "templates",
+          "params":{
+            "_id?": "string",
+            "id": "string",
+            "name": "string",
+            "body": "string",
+            "id": "number",
+            "name": "string",
+            "expanded_body": "string",
+            "expanded_tags": "any[]",
+            "expanded_title": "string",
+            "tags": "any[]",
+            "title": "string"
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "inMemory",
+      "type": "memoryDb",
+      "collections": [
+        {
+          "name": "logs",
+          "params": {
+            "_id?": "string",
+            "type": "string",
+            "message": "string"
+          }
+        }
+      ]
+    }
+  ]
+}

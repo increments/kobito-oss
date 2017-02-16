@@ -1,0 +1,109 @@
+mixin groupSelect(groups, value)
+  select(onChange=onSelectedGroupChanged value=(value) style={margin: 5})
+    for g in [{name: __("Public"), url_name: "public"}].concat(groups)
+      option(value=g.url_name)= g.name
+
+.editContainer
+  .editor(
+    class=(showPreview ? 'showPreview' : '')
+  )
+    .toolbar
+      .toolbar_teamName(data-tooltip=__('Current Team'))
+        =teamName
+      .toolbar_menu
+        .toolbar_item.toolbar_item_insertImage(data-tooltip=__('Insert an Image (Drag & Drop)'))
+          i.fa.fa-fw.fa-image
+          input(
+            ref='insertImageInput'
+            type='file'
+            accept='image/*'
+            onChange=onChangeInsertImageInput
+            title=__('You can drag & drop images.')
+          )
+        if templates.length > 0
+          .toolbar_item.toolbar_item_template
+            Pulldown(
+              iconClass='pulldown-icon fa fa-fw fa-file-text-o'
+              ref='templatesPulldown'
+              className='toolbar_template_content'
+              items=templates
+              title=__('Add from template')
+            )
+        if item.syncedItemId
+          .toolbar_item(data-tooltip=__('Open the Item in Qiita'))
+            i.qsf.qsf-logomark(onClick=onClickOpenQiita)
+
+        if showPreview 
+          .toolbar_item.toolbar_item_previewToggle(onClick=onClickPreviewToggle data-tooltip=__('Close the preview'))
+            i.fa.fa-fw.fa-arrow-right
+        else
+          .toolbar_item.toolbar_previewToggle(onClick=onClickPreviewToggle data-tooltip=__('Open the preview'))
+            i.fa.fa-fw.fa-arrow-left
+    MarkdownEditor(ref='editor' teamId=item.teamId)
+    .messages
+      if messages
+        span=messages[0]
+        
+  .preview(
+    class=(showPreview ? 'showPreview narrow-scrollbar' : '')
+  )
+    h1.preview_title=buffer.title
+    if showPreview
+      MarkdownPreview(body=buffer.body)
+      
+  .footerMenu
+    .footerMenu_wrapper
+      .tags
+        .tags_label
+          label.tags_label_icon
+            i.fa.fa-tags(title=__('Tag'))
+        .tags_input
+          OnelineEditor(
+            ref='tagBuffer'
+            placeholder=__('Input tags with space...') autocomplete = true canditates = tagCanditates
+            extraKeys = tagExtraKeys
+          )
+      .actions
+        if !isLocalTeam
+          //- group ui
+          if groups != null && groups.length > 0
+            +groupSelect(groups, buffer.selectedGroup ? buffer.selectedGroup.url_name : "public")
+          else if buffer.selectedGroup
+            = buffer.selectedGroup.name
+
+        if isLocalTeam
+          //- ignore at inbox
+        else if item.synced_at == null
+          if item.teamId === 'qiita'
+            if buffer.tags.length > 0
+              button.actions_btn.actions_newUpload(onClick=onClickUpload)
+                i.fa.fa-upload
+                | &nbsp;
+                = __('Upload')
+            else
+              .actions_synced()
+                = __('At least one tag is required')
+          else
+            button.actions_btn.actions_newUpload(onClick=onClickUpload)
+              i.fa.fa-upload
+              | &nbsp;
+              = __('Upload')
+        else if canUpdate || canUpload
+          //- Update in local
+          button.actions_btn.actions_upload(onClick=onClickUpdate)
+            i.fa.fa-upload
+            | &nbsp;
+            = __('Upload')
+        else
+          .actions_synced()
+            i.fa.fa-check
+            | &nbsp;
+            = __('Synced')
+          
+        if canUpdate
+          button.actions_btn.actions_save(onClick=onClickSaveAndBack)
+            i.fa.fa-save
+            = ' ' + __('Save')
+        else
+          button.actions_btn.actions_back(onClick=onClickBackWithoutEditing)
+            = __('Back')

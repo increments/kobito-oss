@@ -1,0 +1,19 @@
+@import 'variables/twemoji_codes';
+
+// Adapted from twemoji-awesome.scss
+.twemoji {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 1em 1em;
+}
+
+@each $code in $twemoji-codes {
+  .twemoji-#{$code} {
+    background-image: url("../assets/twemoji/svg/#{$code}.svg");
+  }
+}

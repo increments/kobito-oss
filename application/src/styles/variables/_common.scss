@@ -1,0 +1,45 @@
+// Variables
+
+// Layouts
+$base-gutter-width: 10px;
+
+// Sizes
+$border-radius-base: 4px;
+
+// Base colors
+$positive-color: #3EA0E7;
+$danger-color: #d34545;
+$notice-color: #f78607;
+$brand-color-team: #1887d0;
+$brand-color-qiita: #59bb0c;
+
+// Gray colors
+$gray-lighter:  lighten($theme-border-color, 5%);
+$gray-light:    darken($theme-border-color, 10%);
+$gray:          darken($theme-border-color, 30%);
+$gray-dark:     darken($theme-border-color, 50%);
+$gray-darker:   darken($theme-border-color, 60%);
+
+// Typography
+$text-color: #4a4a4a;
+$base-font-family: "游ゴシック","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",sans-serif;
+$code-font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+$bullet: '\002022';
+$italic-font-family: $base-font-family;
+
+// Sync Status
+$color-synced: #3bce66;
+$color-upload: $notice-color;
+$color-upload-new: #18abe5;
+$color-broken: #d01f1f;
+
+// Z-index setting
+$z-index-base: 0;
+$z-index-fixed-toolbar: 100;
+$z-index-tooltip: 200;
+$z-index-dropdown: 300;
+$z-index-popup-base: 1000;
+$z-index-popup-cover: 1010;
+$z-index-popup-box: 1020;
+$z-index-popup-content: 1030;
+$z-index-hints: 1100;

@@ -1,0 +1,17 @@
+div(data-tooltip=title, className='pulldown '+className+(opened ? ' opened' : ''))
+  .pulldown-toggle(onClick=onClickTitle)
+    if labelText
+      span.pulldown-title(data-label-text=labelText)=labelText
+    i(className=iconClass)
+      
+  if opened
+    ul.pulldown-menu.narrow-scrollbar 
+      each item in items
+        if item.id === '#separator'
+          li.pulldown-separator
+        else
+          li.pulldown-item(
+            data-id=item.id
+            onClick=item.onSelect.bind(self)
+          )
+            span()= item.text

@@ -1,0 +1,14 @@
+.webview {
+    height: 100%;
+    background-color: $theme-header-background-color;
+    &_header {
+        padding: 10px 20px;
+        border-bottom: 1px solid $theme-border-color;
+    }
+    &_body {
+        height: 100%;
+    }
+    &_btn {
+        @include btn-default;
+    }
+}

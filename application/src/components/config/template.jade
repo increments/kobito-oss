@@ -1,0 +1,101 @@
+.config.narrow-scrollbar
+    
+  h1.config_title
+    i.fa.fa-cog(onClick=onClickCog)
+    | &nbsp;
+    = __('Preference')
+
+  if endOfOldVersion
+    | 
+    .config_configs
+
+      p 潜在的なセキュリティ上の問題の回避のため、v2.0.0以降への更新には、バイナリの更新が必要となりました。引き続きkobitoを使用するためには、以下のリンクから最新版をダウンロードしてください。
+      p
+        a(href="http://kobito.qiita.com/win") Kobito for Windows
+      p また、Qiita, Qiita:Team と同期していない記事や、Inboxの記事を引き継ぐ場合は、以下のダンプツールからダンプを作成し、移行先の環境でダンプからの復元ツールを使用してください。
+      p ダンプによるデータ引き継ぎを行った場合、ログイン状態は引き継がれないので、引き継ぎ先で再度ログインする必要があります。
+      p お手数かけますが、引き続き Kobito for windows をよろしくお願いいたします。
+
+      hr
+      h2 Recovery Tools
+        .config_section
+          .config_section_title
+            = __('Create dump file')
+          .config_section_description
+            = __('Save all items to restore')
+          .config_section_description= __("Save to: ") + dumpPath
+          .config_section_description
+            = __('You can\'t migrate items from Kobito for Mac')
+          button.config_btn(onClick=onClickDump)
+            = __('Create dump')
+        .config_section
+          .config_section_title
+            = __('Developer tools')
+          button.config_btn(onClick=onClickDevTools)
+            = __('Display developer tools')
+  else
+    .config_section
+      .config_section_title
+        = __('Create dump file')
+      .config_section_description
+        = __('Save all items to restore')
+      .config_section_description= __("Save to: ") + dumpPath
+      .config_section_description
+        = __('You can\'t migrate items from Kobito for Mac')
+      button.config_btn(onClick=onClickDump)
+        = __('Create dump')
+    .config_configs
+      .config_section
+        .config_section_title
+          = __('Restore from dump')
+        .config_section_description
+          = __('It will be restored to database when dumpfile created')
+        button.config_btn(onClick=onClickRestoreFromDump)
+          = __('Restore')
+
+    ConfigTable(
+      content=content
+      onUpdate=onUpdateConfigTable
+    )
+    
+    .config_section
+      .config_section_title
+        = __('Update teams and templates')
+      .config_section_description
+        = __('Use it when you may have changes in server')
+      button.config_btn(onClick=onClickUpdateTeamAndTemplates)
+        = __('Update teams and templates')
+        
+  if !endOfOldVersion
+    .config_devConfigs
+      h2.config_devConfigs_title
+        i.fa.fa-flask
+        | &nbsp;
+        = __('Settings for developers')
+      .config_section
+        .config_section_title
+          = __('Developer tools')
+        button.config_btn(onClick=onClickDevTools)
+          = __('Display developer tools')
+      .config_section
+        .config_section_title
+          = __('Data initialize')
+        .config_section_description
+          = __('Reset all items and login information')
+          br
+          = __('It doesn\'t affect to Qiita')
+        button.config_btn(onClick=onClickResetAll)
+          = __('Initialize')
+      .config_section
+        .config_section_title
+          = __('Re-Login')
+        .config_section_description
+          = __('Login again to reset user session')
+        button.config_btn(onClick=onClickRelogin)
+          = __('Re-Login')
+      .config_section
+        .config_section_description
+          = 'License: Twemoji by Twitter, Inc is licensed under CC-BY 4.0.'
+  .config_footer
+    button.config_btn.save-and-back(ref='saveAndBack' onClick=onClickSaveAndBack)
+      = __('Back')

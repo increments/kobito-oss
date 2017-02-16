@@ -1,0 +1,114 @@
+- var isTeam = !selectedTeam.local;
+.main
+  Header(
+    selectedTeam=selectedTeam
+    selectedItem=selectedItem
+    templates=templates
+    teams=teams
+    isTeam=isTeam
+    ref='header'
+    logined=logined
+  )
+  .contentBody(onClick=onClickContentBackground key='content-body')
+    .contentBody_titles(key=selectedTeam.name+'_titles')
+      .contentBody_titles_search(key='content-body-title-search')
+        i.fa.fa-search
+        SearchInput(ref='queryInput' key='queryInput' initialValue=filterQuery)
+      .contentBody_titles_listWrapper(
+        key=selectedTeam.name+'_listWrapper'
+      )
+        ul.titleList.narrow-scrollbar(
+          ref='titleList'
+          key=selectedTeam.name+'_titleList'
+        )
+          if items.length
+            - each item in items
+              if selectedItem && item._id === selectedItem._id
+                ListItem(
+                  key=item._id
+                  item=item
+                  selected=true
+                  isTeam=isTeam
+                  showUpload=isTeam
+                )
+              else
+                ListItem(
+                  key=item._id
+                  item=item
+                  isTeam=isTeam
+                  showUpload=isTeam
+                )
+          else
+            h3.titleList_blank
+              span= __('NO ITEM')
+            
+    .contentBody_preview.narrow-scrollbar
+      if selectedItem
+        if onEdit
+          MarkdownEditor(ref='editor' teamId=selectedItem.teamId)
+        else
+          Toolbar(item=selectedItem showUpload=isTeam teams=teams selectedTeam=selectedTeam)
+          div(key="selected-preview")
+          h2.contentBody_preview_title= selectedItem.title
+          .markdown-content(
+            ref='mdcontent'
+            dangerouslySetInnerHTML={ __html: selectedItem.compiled_body}
+          )
+      else
+        div(key="blank-preview" class="contentBody_blank narrow-scrollbar")
+          .contentBody_blank_section
+            i.qsf.qsf-kaita.contentBody_blank_title
+            span.contentBody_blank_version=' v'+version
+            if !logined
+              .contentBody_blank_login
+                button.contentBody_blank_loginBtn(onClick=onClickLogin)
+                  i.qsf.qsf-logomark.contentBody_blank_loginIcon
+                  = __('Login to Qiita')
+
+          if hasNextAsar
+            p
+              = __('Latest version is downloaded(\'it will be applied at next boot\').')
+
+          if announcements.length > 0
+            .contentBody_blank_section.contentBody_blank_announce
+              .contentBody_blank_sectionTitle
+                i.fa.fa-bullhorn
+                |&nbsp;
+                = __('Information')
+              .contentBody_blank_announceContent
+                for a in announcements
+                  p(
+                    key='changelog'
+                    dangerouslySetInnerHTML={ __html: a.message}
+                  )
+
+          if latest_version
+            .contentBody_blank_newVersion
+              //- p.contentBody_blank_newVersionText
+                i.fa.fa-rocket &nbsp;
+                = __("Newer version is available: ") + latest_version
+              button.contentBody_blank_newVersionBtn(
+                onClick=onClickDownload
+                data-link=download_link
+              ) 
+                i.fa.fa-download(data-link=download_link)
+                span(data-link=download_link)
+                  | &nbsp;
+                  = __('Download')
+          if CHANGELOG
+            .contentBody_blank_section.contentBody_blank_changelog(
+              key='changelog-wrapper'
+            )
+              .contentBody_blank_sectionTitle
+                i.fa.fa-clock-o
+                | &nbsp;
+                = __('CHANGELOG')
+              .markdown-content(
+                key='changelog'
+                dangerouslySetInnerHTML={ __html: CHANGELOG}
+              )
+          .contentBody_blank_footer
+            button(class="contentBody_blank_feedback", onClick=onClickContact)
+              i.fa.fa-comments-o
+              | &nbsp;
+              = __('Feedback')

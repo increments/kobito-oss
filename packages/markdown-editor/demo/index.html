@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Editor test</title>
+  <meta charset='utf-8' />
+</head>
+
+<style>
+  body {
+    background-color: ;
+  }
+</style>
+<script src='../dist/bundle.js'></script>
+<script charset="utf-8">
+window.addEventListener('load', function(){
+  window.editor = createMyEditor(document.body, {
+    // theme: "dark"
+    // vimMode: true,
+    // keyMap: 'vim'
+    // contentEditable: true
+    // inputStyle: 'contenteditable'
+  });
+  // editor.on('change', function(){
+  //   console.log('changed to', editor.getValue());
+  // });
+  editor.setSize('100%', '600px');
+  editor.setValue(([
+    '',
+    '',
+    'aaa',
+    'aac',
+    'acc',
+    'ccc'
+  ]).join('\n'));
+  // editor.focus();
+
+  var collect = function(cm, word) {
+    return (['aaaa', 'bbb', 'ccc', '日本語'])
+    .filter(function(w) {
+      return w.indexOf(word) === 0 && w !== word;
+    });
+  }
+
+  window.oneline = createOnelineEditor(document.body, {
+    collect: collect
+  });
+  // oneline.setSize('100%', '600px');
+  oneline.focus();
+});
+</script>
+
+<body>
+</body>
+</html>

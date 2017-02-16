@@ -1,0 +1,195 @@
+// popup
+#layout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $z-index-popup-base;
+}
+
+.popupContainer {
+    box-sizing: border-box;
+    >div {
+        box-sizing: border-box;
+    }
+}
+.popup-region {
+    box-sizing: border-box;
+    .modal {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: $z-index-popup-box;
+        overflow: auto;
+        padding-top: 60px;
+        opacity: 0;
+        -webkit-animation: fadeInDown ease .25s;
+        -webkit-animation-iteration-count: 1;
+        -webkit-transform-origin: 50% 50%;
+        -webkit-animation-fill-mode: forwards;
+        &_content {
+            left: 50%;
+            right: auto;
+            z-index: $z-index-popup-content;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: $theme-background-color;
+            border-radius: 3px;
+            box-shadow: rgba($theme-strong-text-color, .2) 0 0 0 6px;
+            &_body {
+                @include break-word;
+                max-width: inherit;
+                max-height: 400px;
+                overflow-y: auto;
+                margin: 10px 0 20px;
+                color: $theme-text-color;
+                -webkit-user-select: text;
+                h1 {
+                    margin-top: 0;
+                }
+            }
+            &_message {
+                margin: 0;
+                white-space: pre-wrap;
+                overflow: auto;
+                line-height: 1.5;
+                a {
+                    color: $theme-link-color;
+                    text-decoration: none;
+                }
+            }
+            &_options {
+                margin-top: 15px;
+            }
+            &_footer {
+                text-align: right;
+            }
+            &_button {
+                @include btn-default;
+                margin-left: 10px;
+                &[data-selected] {
+                    outline: thin dotted;
+                    outline-offset: -2px;
+                }
+                &[data-choice-type=danger] {
+                    @include btn-danger;
+                }
+                &-disabled {
+                    @include btn-disabled;
+                }
+            }
+            &_loginLogo {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                font-size: 80px;
+                color: $brand-color-qiita;
+            }
+        }
+        // Welcome message
+        &.welcome {
+            -webkit-animation-delay: .3s !important;
+            -webkit-animation-duration: 1s !important;
+            .modal_content {
+                width: 320px;
+            }
+            &_logo {
+                font-size: 120px;
+                display: block;
+                text-align: center;
+            }
+            &_message {
+                text-align: center;
+            }
+        }
+    }
+    @keyframes fadein {
+        0% { opacity: 0; padding-top: 10px;}
+        100% { opacity: 1; padding-top: 60px;}
+    }
+    .cover {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: $z-index-popup-cover;
+        background: rgba(0, 0, 0, 0.6);
+    }
+    //Spiner
+    .loader {
+        @extend .modal;
+        &_content {
+            left: 50%;
+            right: auto;
+            z-index: $z-index-popup-content;
+            width: 100%;
+            max-width: 100px;
+            margin: 0 auto;
+            padding-top: 100px;
+            text-align: center;
+        }
+        &_content_loader {
+            margin-bottom: 15px;
+            font-size: 36px;
+            color: $theme-text-color;
+        }
+        &_content_message {
+            display: block;
+            color: $theme-text-color;
+            font-size: 14px;
+        }
+    }
+    .cover-loading {
+        @extend .cover;
+        background: rgba($theme-background-color, .6);
+    }
+}
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity:0;
+    -webkit-transform:  translate(0px,-25px)  ;
+  }
+  100% {
+    opacity:1;
+    -webkit-transform:  translate(0px,0px)  ;
+  }
+}
+
+.error-stack-container {
+    font-size: 12px;
+    color: $theme-text-color;
+}
+
+// Logger
+.message {
+    &_container {
+        position: fixed;
+        width: 180px;
+        right: 35px;
+        z-index: $z-index-popup-content + 1;
+
+    }
+    &_content {
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        border-radius: 3px;
+        font-size: 14px;
+        text-align: left;
+        line-height: 1.4;
+        color: #fff;
+
+        &[data-logger-type=normal] {
+            background-color: rgba(0, 0, 0, .6);
+        }
+        &[data-logger-type=warn] {
+            background-color: rgba(200, 0, 0, .6);
+        }
+    }
+}

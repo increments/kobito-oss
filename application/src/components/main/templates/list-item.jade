@@ -1,0 +1,36 @@
+li(
+  className='item-title titleList_item'+(selected ? ' selected' : '')
+  key= _id
+  onDoubleClick=onDbClick
+  onClick=onClickTitle
+  onContextMenu=onContextMenu
+  data-item-id= _id
+)
+  if isTeam
+    if !!conflict_item
+      i.fa.fa-exclamation-triangle.titleList_item_menuIcon.titleList_item_menuIcon-broken(
+        data-tooltip=__('Confricted')
+      )
+    else if showUpload && (statusColor !== "gray")
+      i.fa.fa-upload.titleList_item_menuIcon.titleList_item_menuIcon-upload(
+        data-tooltip=__('Unuploaded')
+        style={
+          color: statusColor,
+        }
+      )
+    else if item.coediting
+      i.fa.fa-users.titleList_item_menuIcon.titleList_item_menuIcon-synced
+    else
+      i.fa.fa-check.titleList_item_menuIcon.titleList_item_menuIcon-synced(
+        data-tooltip=__('Synced')
+      )
+  .titleList_item_titleBlock
+    if title
+      h3.titleList_item_title= title
+    else
+      h3.titleList_item_title.titleList_item_title-blank
+        = __('No Title')
+    if _tags && _tags.length > 0
+      .tags-container.titleList_item_tagsContainer
+        - each _tag in _tags
+          button.titleList_item_tag(onClick=onClickTag)= _tag.name

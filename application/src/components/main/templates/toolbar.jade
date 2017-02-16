@@ -1,0 +1,139 @@
+if !conflict_item
+  .previewToolbar
+    .previewToolbar_syncStatus
+      if showUpload
+        if (statusColor !== "gray")
+          - var uploadable = (local_updated_at > synced_at);
+          .previewToolbar_btn(
+            key = 'previewToolbar_btn:' + _id
+            uploadable=uploadable
+            onClick=onClickShare
+            data-tooltip=__('Upload')
+            data-item-id= _id
+          )
+            i.fa.fa-upload(
+              data-item-id= _id
+              style={
+                color: statusColor,
+              }
+            )
+
+            // TODO: fix me
+            span(
+              data-item-id= _id
+            )
+              | &nbsp;
+              span(
+                data-item-id= _id
+              )
+                = __('Upload')
+        else
+          .previewToolbar_synced
+            i.fa.fa-check
+            | &nbsp;
+            = __('Synced')
+            span.previewToolbar_syncedAt
+              = formatedSyncedAt
+        if !!group
+          = group.name
+      if !selectedTeam.local && selectedTeam._id !== 'qiita'
+        if item.coediting
+          .previewToolbar_coedited
+            i.fa.fa-users
+            | &nbsp;
+            =__('Coedited item')
+        else if !item.coediting && item.syncedItemId
+          .previewToolbar_coediting(
+            data-item-id= _id
+            onClick=onClickMakeCoedit
+          )
+            i.fa.fa-users
+            | &nbsp;
+            = __('Make this item coedit')
+    .previewToolbar_actions
+      if item.teamId === '#inbox'
+        Pulldown(
+          iconClass='fa fa-fw fa-mail-forward'
+          className='previewToolbar_item'
+          items= teamItems
+          title=__('Move Item')
+        )
+      if item.teamId === '#trash'
+      
+        i.fa.fa-trash.previewToolbar_item.previewToolbar_delete(
+          data-tooltip=__('Delete')
+          onClick=onClickDelete
+          data-item-id= _id
+        )
+        i.fa.fa-clipboard.previewToolbar_item(
+          data-tooltip=__('Copy to clipboard')
+          onClick=onClickClipboard
+        )
+        i.fa.fa-external-link-square.previewToolbar_item(
+          data-tooltip=__('Preview with an external window')
+          onClick=onClickOpenExternal
+          data-item-id= _id
+        )
+        if item.sentTrashFrom
+          i.fa.fa-undo.previewToolbar_item(
+            data-tooltip=__('Undo')
+            onClick=onClickRecoverFromTrash
+            data-item-id= _id
+          )
+
+      else
+        i.fa.fa-pencil.previewToolbar_item.previewToolbar_edit(
+          data-tooltip=__('Edit')
+          onClick=onClickEdit
+          data-item-id= _id
+        )
+        i.fa.fa-trash.previewToolbar_item.previewToolbar_delete(
+          data-tooltip=__('Send items to the trash')
+          onClick=onClickDelete
+          data-item-id= _id
+        ) 
+        i.fa.fa-clipboard.previewToolbar_item(
+          data-tooltip=__('Copy to clipboard')
+          onClick=onClickClipboard
+        )
+        i.kaiticon.kaiticon-export.previewToolbar_item.previewToolbar_edit.tooltip-right-aligned(
+          data-tooltip=__('Export')
+          onClick=onClickExport
+          data-item-id= _id
+        )
+        i.fa.fa-external-link-square.previewToolbar_item.tooltip-right-aligned(
+          data-tooltip=__('Preview with an external window')
+          onClick=onClickOpenExternal
+          data-item-id= _id
+        )
+        if syncedItemId
+          i.qsf.qsf-logomark.previewToolbar_item.previewToolbar_item-openQiita.tooltip-right-aligned(
+            data-tooltip=__('Open the Item in Qiita')
+            onClick=onClickOpenQiita
+          )
+else
+  .alertConflict
+    .alertConflict_message
+      .alertConflict_message_title
+        i.fa.fa-exclamation-triangle
+          = __(' CAUTION ')
+        = __('This item is conflicted on Qiita')
+      = __('The item which is not chosen will be removed')
+      br
+      = __('Please save backup if you worry it')
+    button.alertConflict_btn(
+      onClick=onClickResolveConflict
+    )
+      = __('Select the item you prefer')
+    
+    button.alertConflict_btn(
+      onClick=onClickOpenQiita
+    )
+      = __('Check item on Qiita')
+    
+    i.fa.fa-clipboard.alertConflict_btn(
+      data-tooltip= __('Copy to clipboard')
+      onClick=onClickClipboard
+    )
+      | &nbsp;
+      = __('Copy to clipboard')

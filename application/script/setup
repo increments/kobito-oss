@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+npm install -g dtsm@0.9
+yarn install
+dtsm --insight false install
+
+(
+  cd api
+  yarn install
+  dtsm --insight false install
+  yarn run build
+)
+
+$(npm bin)/gulp build:web

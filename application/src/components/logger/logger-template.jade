@@ -1,0 +1,14 @@
+if logs && logs.length
+  ReactTransitionGroup
+    .message
+      each log, n in logs
+        .message_container(
+          key=log.message
+          style= {
+            top: 92 + 60 * n,
+            transition: 'top .5s ease'
+          }
+        )
+          .message_content(
+            data-logger-type=log.type
+          )=log.message

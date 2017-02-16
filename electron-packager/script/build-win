@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+const packager = require("electron-packager");
+const pkg = require("../../application/package.json");
+
+packager({
+    name: "kobito",
+    dir: "./browser",// ソースフォルダのパス
+    out: "./dist",// 出力先フォルダのパス
+    icon: "./assets/kobito.ico",// アイコンのパス
+    platform: "win32",
+    arch: "ia32",
+    version: "1.2.5",
+    overwrite: true,
+    asar: false,// asarパッケージ化
+    "app-version": pkg.version,
+    "app-copyright": "Copyright (C) 2017 Increments Inc.",
+
+    "version-string": {// Windowsのみのオプション
+        CompanyName: "Increments, Inc",
+        FileDescription: "kobito",
+        OriginalFilename: "kobito.exe",
+        ProductName: "kobito",
+        InternalName: "kobito"
+    }
+
+}, function (err, appPaths) {// 完了時のコールバック
+    if (err) console.log(err);
+    console.log("Done: " + appPaths);
+});

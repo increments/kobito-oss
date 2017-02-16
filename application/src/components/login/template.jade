@@ -1,0 +1,14 @@
+.webview.login
+  .webview_header
+    button.webview_btn(onClick=onClickBack)
+      i.fa.fa-arrow-left
+      |&nbsp;
+      = __('Back')
+  .webview_body
+    webview(
+      ref='webview'
+      key='login-page'
+      src=url
+      autosize='on'
+      style={width: 640, height: 480}
+    )

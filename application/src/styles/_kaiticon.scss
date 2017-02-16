@@ -1,0 +1,22 @@
+@import 'variables/kaiticon_icons';
+
+$iconSize: 1em;
+.kaiticon {
+    &:before {
+        display: inline-block;
+        content: '';
+        height: $iconSize;
+        width: $iconSize;
+        margin: 0 .05em 0 .1em;
+        vertical-align: -0.1em;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: $iconSize $iconSize;
+    }
+}
+
+@each $icon in $kaiticon-icons {
+    .kaiticon-#{$icon}:before {
+        background-image: url("../assets/kaiticon/#{$icon}.svg");
+    }
+}

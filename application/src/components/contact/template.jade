@@ -1,0 +1,13 @@
+.webview.contact
+  .webview_header
+    button.webview_btn(onClick=onClickBack)
+      i.fa.fa-arrow-left
+      |&nbsp;
+      = __('Back')
+  .webview_body
+    webview(
+      ref='webview'
+      key='contact-page'
+      src='https://docs.google.com/a/qiita.com/forms/d/1Ppt-_s437LIKc8prUH3cVrxoDnU2CqDd6IADXqngQ5E/viewform'
+      autosize='on'
+    )

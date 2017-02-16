@@ -1,0 +1,129 @@
+$theme-name: dark;
+$theme-background-color: #303030;
+$theme-text-color: #ccc;
+
+// Basic styles
+
+.cm-s-#{$theme-name}.CodeMirror {
+  background: $theme-background-color;
+  color: $theme-text-color;
+
+  pre { color: $theme-text-color; }
+
+}
+
+// Gutter styles
+
+.cm-s-#{$theme-name} .CodeMirror-gutters {
+  border-right: 1px solid $theme-background-color;
+  background-color: $theme-text-color;
+}
+.cm-s-#{$theme-name} .CodeMirror-linenumber { color: #999; }
+.cm-s-#{$theme-name} .CodeMirror-guttermarker { color: #ccc; }
+.cm-s-#{$theme-name} .CodeMirror-guttermarker-subtle { color: #999; }
+
+// Can style cursor different in overwrite (non-insert) mode
+.cm-s-#{$theme-name} .CodeMirror-overwrite .CodeMirror-cursor {}
+.cm-s-#{$theme-name} .CodeMirror-ruler { border-left: 1px solid #999; }
+.cm-s-#{$theme-name} .CodeMirror-scrollbar-filler,
+.cm-s-#{$theme-name} .CodeMirror-gutter-filler {
+  // background-color: #fff; /* The little square between H and V scrollbars */
+}
+
+// Markdown styles
+.cm-s-#{$theme-name} .cm-link { color: #14ac65; }
+.cm-s-#{$theme-name} .cm-string.cm-link {color: #74867e; }
+.cm-s-#{$theme-name} .cm-variable.cm-link {color: #74867e; }
+.cm-s-#{$theme-name} .cm-variable-2.cm-link {color: #14ac65; }
+.cm-s-#{$theme-name} .cm-variable-3.cm-link {color: #14ac65; }
+
+.cm-s-#{$theme-name} .cm-variable { color: $theme-text-color; }
+.cm-s-#{$theme-name} .cm-variable-2 { color: $theme-text-color; }
+.cm-s-#{$theme-name} .cm-variable-3 { color: $theme-text-color; }
+// .cm-s-#{$theme-name} .cm-variable-2 { color: #5F869F; }
+// .cm-s-#{$theme-name} .cm-variable-3 { color: #C66767; }
+
+.cm-s-#{$theme-name} .cm-header { color: #17b571; }
+
+.cm-s-#{$theme-name} .cm-header-1 { color: #7fd1ac; }
+.cm-s-#{$theme-name} .cm-header-2 { color: #1ac480; }
+.cm-s-#{$theme-name} .cm-header-3 { color: #18ba74; }
+.cm-s-#{$theme-name} .cm-header-4 { color: #17b571; }
+.cm-s-#{$theme-name} .cm-header-5 { color: #14ac65; }
+.cm-s-#{$theme-name} .cm-header-6 { color: #12a45c; }
+
+.cm-s-#{$theme-name} .cm-bracket { color: #997; }
+.cm-s-#{$theme-name} .cm-tag { color: #c2bea6; }
+.cm-s-#{$theme-name} .cm-attribute { color: #c4b75d; }
+.cm-s-#{$theme-name} .cm-string { color: #979482; font-size: .9em; }
+.cm-s-#{$theme-name} .cm-string-2 { color: #a69d7a; font-size: .9em; }
+.cm-s-#{$theme-name} .cm-hr { color: #999; }
+.cm-s-#{$theme-name} .cm-quote { color: #739a8d; }
+.cm-s-#{$theme-name} .cm-keyword { color: #9f69aa; } // e.g. var, function
+.cm-s-#{$theme-name} .cm-builtin {color: #9f69aa; }
+.cm-s-#{$theme-name} .cm-def { color: #7bbb3a; }
+.cm-s-#{$theme-name} .cm-meta {color: #7bbb3a; } // e.g. @font-face
+.cm-s-#{$theme-name} .cm-qualifier {color: #5da4d1; }
+.cm-s-#{$theme-name} .cm-property {color: #a89f61; }
+
+// Code block styles
+.cm-s-#{$theme-name} .cm-comment {
+  color: #c2bea6;
+  font-family: Consolas,monaco,'MS ゴシック' monospace;
+  font-size: 85%;
+}
+
+// Selected styles
+
+.cm-s-#{$theme-name} .CodeMirror-selected { background: #555 !important; }
+.cm-s-#{$theme-name} .CodeMirror-focused .CodeMirror-selected { background: #555; }
+.cm-s-#{$theme-name} .CodeMirror-crosshair { cursor: crosshair; }
+.cm-s-#{$theme-name}.CodeMirror::selection { background: #555; }
+
+// Cursor
+
+.cm-s-#{$theme-name} .CodeMirror-cursors {
+  border-left: 1px solid $theme-text-color;
+  color: darken($theme-text-color, 20%);
+  background-color: $theme-text-color;
+
+  .CodeMirror-cursor {
+    color: $theme-text-color;
+    background-color: darken($theme-text-color, 20%);
+    border-left: 1px solid darken($theme-text-color, 20%);
+  }
+
+  .CodeMirror-overlayscroll-vertical div { background-color: #ddd; }
+}
+
+// Shown when moving in bi-directional text
+.cm-s-#{$theme-name} .CodeMirror-secondarycursor {
+  border-left: 1px solid darken($theme-text-color, 20%);
+}
+
+.cm-s-#{$theme-name} .cm-fat-cursor {
+  .CodeMirror-cursor { background-color: darken($theme-text-color, 20%); }
+  .CodeMirror-cursors { background-color: darken($theme-text-color, 20%); }
+}
+
+// Other color options (Not use in kobito now)
+
+//
+// .cm-s-#{$theme-name} .cm-atom { color: #219; }
+// .cm-s-#{$theme-name} .cm-number { color: #164; }
+// .cm-s-#{$theme-name} .cm-punctuation,
+// .cm-s-#{$theme-name} .cm-property,
+// .cm-s-#{$theme-name} .cm-operator {}
+//
+// .cm-s-#{$theme-name} .cm-negative { color: #d44; }
+// .cm-s-#{$theme-name} .cm-positive { color: #292; }
+
+// .cm-s-#{$theme-name} .cm-error {color: #cf2d14;}
+// .cm-s-#{$theme-name} .cm-invalidchar {color: #cf2d14;}
+
+// Default styles for common addons
+
+// .cm-s-#{$theme-name} .CodeMirror-matchingbracket {color: #0f0;}
+// .cm-s-#{$theme-name} .CodeMirror-nonmatchingbracket {color: #f22;}
+// .cm-s-#{$theme-name} .CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
+// .cm-s-#{$theme-name} .CodeMirror-activeline-background {background: #e8f2ff;}

@@ -1,0 +1,15 @@
+$theme-name: oneline;
+$theme-background-color: #f7f7f7;
+$theme-text-color: #222;
+
+// Basic styles
+.cm-s-#{$theme-name}.CodeMirror {
+  background: $theme-background-color;
+  // color: $theme-text-color;
+  // pre { color: $theme-text-color; }
+  // height: auto !important;
+  height: 20px;
+  font-size: 20px;
+
+  // border: 1px solid black !important;
+}

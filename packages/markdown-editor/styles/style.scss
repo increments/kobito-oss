@@ -1,0 +1,65 @@
+@import 'theme/theme-default';
+@import 'theme/theme-dark';
+@import 'codemirror';
+
+// Settings for Yu Gothic & Helvetica neue font-face
+// From: http://qiita.com/RinoTsuka/items/4181efd43d072e246519
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 200;
+}
+
+.CodeMirror {
+  font-family: "-apple-system", "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif !important;
+  font-style: normal;
+
+  // Fix for IME layouts
+  > div:first-child { margin-top: 1em; }
+  .CodeMirror-scroll { margin-top: -1em; }
+
+  pre {
+    line-height: 1.5;
+    padding: 0 4px;
+  }
+
+  .CodeMirror-lines {
+    padding: 0 15px 15px;
+  }
+}

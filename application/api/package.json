@@ -1,0 +1,24 @@
+{
+  "name": "kaita-api",
+  "version": "0.0.1",
+  "description": "api",
+  "main": "dist/kaita.js",
+  "scripts": {
+    "setup": "yarn install & yarn run setup:dtsm",
+    "setup:dtsm": "dtsm install",
+    "build": "tsc -t es5  --noEmitOnError -d --sourcemap -m commonjs --out dist/kaita.js src/index.ts",
+    "test": "mocha  --recursive -r espower-coffee/guess test/spec-helper.coffee \"test/**/*.coffee\""
+  },
+  "author": "Increments inc.",
+  "devDependencies": {
+    "coffee-script": "^1.9.2",
+    "dtsm": "^0.9.2",
+    "espower-coffee": "^0.10.0",
+    "mocha": "^2.2.5",
+    "power-assert": "^0.11.0",
+    "react": "^0.13.3",
+    "sinon": "^1.14.1",
+    "stone-skin": "^0.1.2",
+    "typescript": "1.5.0-beta"
+  }
+}

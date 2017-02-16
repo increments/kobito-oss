@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+# Prepare browser
+(
+  cd browser
+  yarn install
+)
+
+# Build application
+(
+  cd ../application
+  yarn install
+  ./script/setup
+)
+
+yarn install
+
+# Locate app.asar
+$(npm bin)/asar pack ../application/public browser/app.asar

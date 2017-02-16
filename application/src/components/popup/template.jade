@@ -1,0 +1,172 @@
+mixin keybinds()
+  - var modes = Object.keys(keymap)
+  each mode in modes
+    h2=mode
+    - var keys = Object.keys(keymap[mode])
+    ul(className=mode+'-keymap')
+      each key in keys
+        li=key+':'+keymap[mode][key]
+
+if type && type !== "none"
+  .popup-region(key='popup-region')
+    if type === 'choices'
+      ReactTransitionGroup
+        .modal(key='choices')
+          .modal_content
+            .modal_content_body
+              if raw
+                p.modal_content_message(
+                  dangerouslySetInnerHTML={ __html: message}
+                )
+              else
+                p.modal_content_message=message
+            .modal_content_footer
+              - each choice, index in choices
+                if index === focusIndex
+                  button.modal_content_button(
+                    onClick=choice.onSelect.bind(self)
+                    data-choice-type=choice.type
+                    data-selected
+                  )=choice.text
+                else
+                  button.modal_content_button(
+                    onClick=choice.onSelect.bind(self)
+                    data-choice-type=choice.type
+                  )=choice.text
+        .cover
+    else if type === 'loading-spinner'
+      ReactTransitionGroup
+        .loader(key='loader')
+          p.loader_content
+            i.fa.fa-spinner.fa-spin.loader_content_loader
+            span.loader_content_message=message
+        .cover-loading
+    else if type === 'help'
+      ReactTransitionGroup
+        .modal(key='help')
+          .modal_content
+            .modal_content_body
+              h1 Help
+              +keybinds()
+              
+        //- .cover-loading(onClick=onClickHelpCover)
+        .cover(onClick=onClickHelpCover)
+    else if type === 'search'
+      ReactTransitionGroup
+        .modal(key='search')
+          .modal_content
+            .modal_content_body
+              i.fa.fa-search
+              input(ref='query' onKeyUp=onKeyUpQuery onKeyDown=onKeyDownQuery)
+              ul.hits
+                if hitItems && hitItems.length > 0
+                  each item, n in hitItems
+                    li(key=n+item._id)
+                      if n == focusIndex
+                        i.fa.fa-angle-right
+                      | &nbsp;
+                      span=item.title
+                else
+                  li.hit No Item
+        .cover-loading(onClick=onClickHelpCover)
+    else if type === 'error'
+      ReactTransitionGroup
+        .modal(key='error')
+          .modal_content
+            .modal_content_body
+              p.modal_content_message=message
+              .error-stack-container
+                pre=stack
+            .modal_content_footer
+              button.modal_content_button(
+                data-choice-type='positive'
+                onClick=onSelectReload
+              )
+                = __('Reload (Recomended)')
+              button.modal_content_button(
+                onClick=onSelectIgnore
+                data-choice-type='danger'
+              )
+                = __('Ignore the error (Unrecommended)')
+        .cover
+
+    else if type === 'welcome'
+      ReactTransitionGroup
+        .modal.welcome(key='welcome')
+          .modal_content
+            .modal_content_body
+              .welcome_logo.qsf.qsf-Kobito-logomark
+              .welcome_message
+                p
+                  i.qsf.qsf-kaita.contentBody_blank_title
+                = __('Welcome to Kobito for Windows!')
+            .modal_content_footer
+
+              button.modal_content_button(
+                onClick=onClickNext
+              )
+                = __('Next')
+        .cover-loading
+
+    else if type === 'upload-check-dialog'
+      ReactTransitionGroup
+        .modal.welcome(key='upload-check-dialog')
+          .modal_content
+            .modal_content_body
+              .modal_content_message
+                = __('You are going to share an item in Qiita.')
+                br
+                = __('Everyone can look items unlike Qiita:Team')
+                .modal_content_options
+                  input(
+                    id='check-for-update'
+                    type='checkbox'
+                    checkedLink= linkState('checkedForUpdate')
+                  )
+                  label(for='check-for-update')
+                    | &nbsp;
+                    = __('Upload to Qiita')
+
+            .modal_content_footer
+              if checkedForUpdate
+                button.modal_content_button(
+                  onClick=onClickYesToPost
+                )
+                  = __('Upload')
+              else
+                button.modal_content_button.modal_content_button-disabled
+                  = __('Upload')
+
+              button.modal_content_button(
+                onClick=onClickNoToPost
+              )
+                = __('Cancel')
+        .cover
+
+    else if type === 'upload-check-dialog-for-team'
+      ReactTransitionGroup
+        .modal(key='upload-check-dialog-for-team')
+          .modal_content
+            .modal_content_body
+              .modal_content_message
+                = __('Are you sure to upload this item?')
+                .modal_content_options
+                  input(
+                    id='check-for-coedit'
+                    type='checkbox'
+                    checkedLink= linkState('checkedForCoedit')
+                  )
+                  label(for='check-for-coedit')
+                    | &nbsp;
+                    = __('Upload item as coedit mode')
+
+            .modal_content_footer
+              button.modal_content_button(
+                onClick=onClickYesToPost
+              )
+                = __('Upload')
+              button.modal_content_button(
+                onClick=onClickNoToPost
+              )
+                = __('Cancel')
+        .cover

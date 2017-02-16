@@ -1,0 +1,74 @@
+# This file overrides https://github.com/causes/scss-lint/blob/master/config/default.yml
+
+scss_files: 'styles/**/*.scss'
+
+exclude: 'styles/codemirror.scss'
+
+
+linters:
+  # Checks the order of nested items within a rule set.
+  DeclarationOrder:
+    enabled: false
+
+  # Reports the lack of empty lines between block defintions.
+  EmptyLineBetweenBlocks:
+    enabled: false
+
+  # Checks for consistent indentation of nested declarations and rule sets.
+  Indentation:
+    enabled: false
+
+  # Checks that `@extend` is always used with a placeholder selector.
+  PlaceholderInExtend:
+    enabled: false
+
+  # Checks the declaration order of properties.
+  PropertySortOrder:
+    enabled: false
+
+  PropertySpelling:
+    extra_properties:
+      - font-variant-numeric
+
+  PseudoElement:
+    enabled: false
+
+  SelectorFormat:
+    enabled: false
+
+  VendorPrefix:
+    enabled: false
+
+  QualifyingElement:
+    allow_element_with_class: true
+
+  ColorVariable:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
+
+  TrailingSemicolon:
+    enabled: false
+
+  # ----------------------------------------------------------------------------
+  # Following options are turned off for corresponding to Qiita BEM naming rules
+  # ----------------------------------------------------------------------------
+
+  # Checks for capitalized letters in IDs, classes, types, etc. in selectors.
+  CapitalizationInSelector:
+    enabled: false
+
+  # Checks that the declared names of functions, mixins, and variables are all
+  # lowercase and use hyphens instead of underscores.
+  NameFormat:
+    enabled: false
+
+  SelectorDepth:
+    max_depth: 4
+
+  NestingDepth:
+    max_depth: 5
+
+  StringQuotes:
+    enabled: false

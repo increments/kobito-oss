@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>preview</title>
+    <meta charset='utf-8' />
+  </head>
+  <link id='main'      rel="stylesheet" type="text/css" />
+  <link id='highlight' rel="stylesheet" type="text/css"/>
+
+  <style>
+    body {
+      padding: 10px;
+    }
+    .contentBody_preview {
+      margin-left: 0;
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', function(){
+      var theme = localStorage.theme || 'default';
+
+      var link = document.head.querySelector('link#main');
+      link.href = 'css/markdown_content_' + theme + '.css';
+
+      var highlightLink = document.head.querySelector('link#highlight');
+      highlightLink.href = 'css/highlight/' + theme + '.css';
+
+      // for a tag
+      document.body.addEventListener('click', function(ev) {
+        if (ev.target.href) {
+          ev.target.target = '_blank';
+          ev.click();
+        }
+      });
+    });
+  </script>
+  <body style='padding: 0; margin: 0;'>
+    <div id='inner' class='markdown-content'></div>
+  </body>
+</html>

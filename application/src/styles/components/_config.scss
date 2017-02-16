@@ -1,0 +1,89 @@
+// Config scene
+
+.config {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 30px;
+    overflow: auto;
+    color: $theme-text-color;
+    background-color: $theme-header-background-color;
+    &_title {
+        margin: 0 0 25px;
+        padding: 0 0 15px;
+        border-bottom: 1px solid $theme-markdown-border-color;
+        font-size: 32px;
+        font-weight: normal;
+        color: $theme-text-color;
+        line-height: 1;
+    }
+    &_btn {
+        @include btn-default;
+    }
+    &_devConfigs {
+        margin-top: 35px;
+        &_title {
+            margin: 0 0 25px;
+            padding: 0 0 15px;
+            border-bottom: 1px solid $theme-markdown-border-color;
+            font-size: 24px;
+            font-weight: normal;
+            color: $theme-text-color;
+            line-height: 1;
+        }
+    }
+    &_section {
+        margin-bottom: 1.5em;
+        &-checkbox {
+            margin-bottom: 0;
+            & + & + & { margin-bottom: 1.5em;}
+        }
+        &_title {
+            display: block;
+            margin-bottom: .8em;
+            line-height: 1;
+            &-checkbox {
+                display: inline-block;
+                margin-bottom: 0;
+            }
+        }
+        &_description {
+            margin-bottom: 1em;
+            color: $theme-sub-text-color;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        &_select {
+            border-radius: 2px;
+            border: 1px solid darken($theme-border-color, 10%);
+            height: 28px;
+            margin: 0;
+            background-color: #fff;
+            background-image: none;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #333;
+            box-sizing: content-box;
+            &:focus {
+                outline: 0;
+            }
+        }
+        &_checkbox {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+        }
+        &_input {
+            display: block;
+            width: 300px;
+            padding: 8px;
+            border-radius: 3px;
+            border: 1px solid darken($theme-border-color, 10%);
+            font-size: 13px;
+        }
+    }
+    &_footer {
+        margin-top: 35px;
+        padding-top: 20px;
+        border-top: 1px solid $theme-markdown-border-color;
+    }
+}

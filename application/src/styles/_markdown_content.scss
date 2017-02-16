@@ -1,0 +1,668 @@
+@import "variables/common";
+@import "mixins";
+
+// Block for container element including HTML rendered from Markdown text.
+.markdown-content {
+  font-size: 16px;
+  line-height: 1.5;
+  color: $theme-text-color;
+  -webkit-user-select: text;
+
+  > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  // Modifier to display anchor element.
+  &-headingEnabled {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      position: relative;
+      &:hover {
+        .fa.fa-link,
+        .icon-link {
+          display: inline-block;
+        }
+      }
+      .fa.fa-link:hover,
+      .icon-link:hover {
+        color: $theme-link-color;
+        text-decoration: none;
+      }
+    }
+  }
+
+  blockquote {
+    color: $theme-blockquote-text-color;
+    font-size: 1em;
+    border-left: solid 4px $theme-blockquote-color;
+    padding: .8em;
+    margin: {
+      top: 1em;
+      bottom: 1em;
+      left: .8em;
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $gray;
+    }
+    p:last-child {
+        margin: 0;
+    }
+  }
+
+  a {
+    @include break-word;
+    border-bottom: 1px dotted transparent;
+    color: $theme-link-color;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    &:hover {
+      color: darken($theme-link-color, 10%);
+      border-color: darken($theme-link-color, 10%);
+    }
+  }
+
+  hr {
+    margin: 1em 0;
+    border: 0;
+    height: 2px;
+    background-color: $theme-markdown-border-color;
+  }
+
+  em {
+    font: {
+      family: $italic-font-family;
+      style: italic;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  b {
+    font-weight: 700;
+  }
+
+  ins {
+    font-weight: 700;
+  }
+
+  del {
+    text-decoration: line-through;
+  }
+
+  p {
+    word-wrap: break-word;
+    margin: 1em 0;
+    font-size: 1em;
+    line-height: 1.7;
+  }
+
+  img {
+    box-sizing: border-box;
+    vertical-align: middle;
+    margin: 0;
+    max-width: 100%;
+  }
+
+  dl {
+    margin: 1em 0;
+    dd {
+      margin-left: 2em;
+    }
+  }
+
+  table {
+    margin: 1em 0;
+    border-left: solid 1px $theme-table-border-color;
+    border-top: solid 1px $theme-table-border-color;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border-bottom: solid 1px $theme-table-border-color;
+    border-right: solid 1px $theme-table-border-color;
+    padding: 8px 10px;
+    word-wrap: break-word;
+  }
+
+  thead td,
+  th {
+    font-weight: 700;
+    background-color: $theme-table-header-color;
+  }
+
+  // tbody tr:nth-child(odd) {
+  //   background-color: rgba(0, 0, 0, .03);
+  // }
+
+  // Remove when table renderling fixed
+  tbody:nth-child(odd) tr {
+    background-color: rgba($theme-strong-text-color, .03);
+  }
+
+  li p:first-child {
+    margin: 0;
+  }
+
+  ol,
+  ul {
+    line-height: 1.5;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-left: 1.5em;
+  }
+
+  ol > li {
+    list-style-type: decimal;
+  }
+
+  ul > li {
+    list-style-type: disc;
+  }
+
+  li.checked,
+  li.unchecked {
+    position: relative;
+    display: block;
+    list-style-type: none;
+    &:before {
+      @extend .fa;
+      display: block;
+      position: absolute;
+      left: -20px;
+      top: 6px;
+    }
+  }
+
+  li.checked:before {
+    content: '\f046';
+  }
+  li.unchecked:before {
+    content: '\f096';
+  }
+
+  li > ol,
+  li > ul {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 1.35em 0 .7em;
+  }
+
+  h1 {
+    $font-size: 1.8em;
+    padding-bottom: .3em;
+    line-height: 1.2;
+    border-bottom: 2px solid $theme-markdown-border-color;
+    font-size: $font-size;
+    .emoji {
+      width: $font-size * .5;
+      height: $font-size * .5;
+      vertical-align: top;
+    }
+  }
+
+  h2 {
+    $font-size: 1.6em;
+    padding-bottom: .3em;
+    line-height: 1.225;
+    border-bottom: 1px dotted darken($theme-markdown-border-color, 3%);
+    font-size: $font-size;
+    .emoji {
+      width: $font-size * .6;
+      height: $font-size * .6;
+      vertical-align: top;
+    }
+  }
+
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+    margin-top: 1.4em;
+  }
+
+  h4 {
+    margin-top: 1.3em;
+    font-size: 1.4em;
+  }
+
+  h5 {
+    margin-top: 1.5em;
+    font-size: 1em;
+  }
+
+  h6 {
+    margin-top: 1.5em;
+    font-size: 1em;
+  }
+
+  // Code container element.
+  // .code-frame {
+  //   border-radius: $border-radius-base;
+  //   margin: 1em 0;
+  //   background-color: $code-bg;
+  //   line-height: 0;
+  // }
+
+  pre {
+    width: 100%;
+    display: block;
+    position: relative;
+  }
+
+  iframe {
+      width: 100%;
+  }
+
+  .code-frame {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    border: 0;
+    background-color: $theme-code-bg;
+    border-radius: $border-radius-base;
+    line-height: 1;
+    .highlight {
+      background-color: transparent;
+    }
+    pre {
+      box-sizing: border-box;
+      padding: 8px 10px;
+      line-height: 20px;
+      overflow-x: auto;
+    }
+  }
+
+  code {
+    font-size: 13px;
+    font-family: $code-font-family;
+  }
+
+  .inlineCode {
+    width: auto;
+    margin: 0 2px;
+    padding: 0 5px;
+    font-size: 12px;
+  }
+
+  .code-lang {
+    color: $theme-text-color;
+    display: inline-block;
+    padding: 3px 6px;
+    margin: 0;
+    -webkit-border-top-left-radius: $border-radius-base;
+    background-color: $theme-code-lang-bg;
+    line-height: 1;
+    vertical-align: top;
+    font-family: $code-font-family;
+    font-size: 11px;
+  }
+
+  // All img elements for Emoji have .emoji class.
+  .emoji {
+    width: 20px;
+    height: 20px;
+  }
+
+  // All heading elements have their .fa-link element for user to click it to get anchored URL.
+  // Maybe .icon-link selector is no longer used.
+  .fa.fa-link,
+  .icon-link {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: -28px;
+    margin-top: -18px;
+    padding: 10px 5px 10px 10px;
+    color: $theme-text-color;
+    font: {
+      size: 16px;
+      weight: 400;
+    }
+  }
+
+  .footnotes {
+    font-size: .9em;
+    margin-top: 2em;
+
+    hr {
+      display: none;
+    }
+  }
+
+  // All heading elements have their fragment elements, anchored from ToC.
+  .fragment {
+    position: relative;
+    top: -10px;
+    display: block;
+  }
+
+  // All code blocks have their .highlight elements.
+  .highlight {
+    background: #fff;
+
+    .c {
+      color: #998;
+      font-style: italic;
+    }
+
+    .err {
+      color: #a61717;
+      background-color: #e3d2d2;
+    }
+
+    .k {
+      font-weight: bold;
+    }
+
+    .o {
+      font-weight: bold;
+    }
+
+    .cm {
+      color: #998;
+      font-style: italic;
+    }
+
+    .cp {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .c1 {
+      color: #998;
+      font-style: italic;
+    }
+
+    .cs {
+      color: #999;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .gd {
+      color: #000;
+      background-color: #fdd;
+
+      .x {
+        color: #000;
+        background-color: #faa;
+      }
+    }
+
+    .ge {
+      font-style: italic;
+    }
+
+    .gr {
+      color: #a00;
+    }
+
+    .gh {
+      color: #999;
+    }
+
+    .gi {
+      color: #000;
+      background-color: #dfd;
+
+      .x {
+        color: #000;
+        background-color: #afa;
+      }
+    }
+
+    .go {
+      color: #888;
+    }
+
+    .gp {
+      color: #555;
+    }
+
+    .gs {
+      font-weight: bold;
+    }
+
+    .gu {
+      color: #800080;
+      font-weight: bold;
+    }
+
+    .gt {
+      color: #a00;
+    }
+
+    .kc {
+      font-weight: bold;
+    }
+
+    .kd {
+      font-weight: bold;
+    }
+
+    .kn {
+      font-weight: bold;
+    }
+
+    .kp {
+      font-weight: bold;
+    }
+
+    .kr {
+      font-weight: bold;
+    }
+
+    .kt {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .m {
+      color: #099;
+    }
+
+    .s {
+      color: #d14;
+    }
+
+    .n {
+      color: #333;
+    }
+
+    .na {
+      color: #008080;
+    }
+
+    .nb {
+      color: #0086b3;
+    }
+
+    .nc {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .no {
+      color: #008080;
+    }
+
+    .ni {
+      color: #800080;
+    }
+
+    .ne {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .nf {
+      color: #900;
+      font-weight: bold;
+    }
+
+    .nn {
+      color: #555;
+    }
+
+    .nt {
+      color: #000080;
+    }
+
+    .nv {
+      color: #008080;
+    }
+
+    .ow {
+      font-weight: bold;
+    }
+
+    .w {
+      color: #bbb;
+    }
+
+    .mf {
+      color: #099;
+    }
+
+    .mh {
+      color: #099;
+    }
+
+    .mi {
+      color: #099;
+    }
+
+    .mo {
+      color: #099;
+    }
+
+    .sb {
+      color: #d14;
+    }
+
+    .sc {
+      color: #d14;
+    }
+
+    .sd {
+      color: #d14;
+    }
+
+    .s2 {
+      color: #d14;
+    }
+
+    .se {
+      color: #d14;
+    }
+
+    .sh {
+      color: #d14;
+    }
+
+    .si {
+      color: #d14;
+    }
+
+    .sx {
+      color: #d14;
+    }
+
+    .sr {
+      color: #009926;
+    }
+
+    .s1 {
+      color: #d14;
+    }
+
+    .ss {
+      color: #990073;
+    }
+
+    .bp {
+      color: #999;
+    }
+
+    .vc {
+      color: #008080;
+    }
+
+    .vg {
+      color: #008080;
+    }
+
+    .vi {
+      color: #008080;
+    }
+
+    .il {
+      color: #099;
+    }
+
+    .gc {
+      color: #999;
+      background-color: #eaf2f5;
+    }
+  }
+
+  // These styles may not be needed because I couldn't find img elements in MathJax elements.
+  .MathJax img,
+  .MathJax_Display img {
+    border: 0 !important;
+  }
+
+  // .parenthesis is not used in normal article pages, but Terms of Service or Privacy pages.
+  .parenthesis {
+    li {
+      list-style-type: none;
+      span {
+        margin-left: -1.5em;
+        margin-right: .5em;
+      }
+    }
+  }
+
+  // // The list elements classed with .task-list-item has checkbox elements inside,
+  // // so the checkboxes substite for their list circles.
+  // .task-list-item {
+  //   list-style-type: none;
+  // }
+  //
+  // // Move checkbox to the same position with list circle.
+  // .task-list-item-checkbox {
+  //   margin: .4em .5em 0 -1.3em;
+  // }
+  //
+  // // The default style of disabled checkbox is too noisy.
+  // .task-list-item-checkbox[disabled] {
+  //   cursor: default;
+  // }
+}

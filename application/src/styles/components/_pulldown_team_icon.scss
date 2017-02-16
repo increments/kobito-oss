@@ -1,0 +1,70 @@
+%team-icon {
+    display: block;
+    position: absolute;
+    width: 20px;
+    font-family: qiitasymbolfont;
+    content: '\e000';
+    color: $brand-color-team;
+}
+%qiita-icon {
+    color: $brand-color-qiita;
+}
+%inbox-icon {
+    font-family: fontawesome;
+    content: '\f01c';
+    color: $theme-strong-text-color;
+}
+%trash-icon {
+    font-family: fontawesome;
+    content: '\f1f8';
+    color: $theme-strong-text-color;
+}
+
+.contentHeader_selectedTeam {
+    padding-left: 13px;
+    .pulldown-title {
+        padding-left: 24px;
+        &:before {
+            @extend %team-icon;
+            font-size: 20px;
+        }
+        &[data-label-text='Qiita']:before {
+            @extend %qiita-icon;
+        }
+        &[data-label-text='Inbox']:before {
+            @extend %inbox-icon;
+        }
+        &[data-label-text='ゴミ箱']:before {
+            @extend %trash-icon;
+        }
+    }
+    .fa.fa-caret-down {
+        padding-left: 3px;
+        font-size: 13px;
+    }
+    .pulldown-item {
+        span {
+            padding-left: 20px;
+        }
+        &:before {
+            @extend %team-icon;
+        }
+        &[data-id='qiita']:before {
+            @extend %qiita-icon;
+        }
+        &[data-id='#inbox']:before {
+            @extend %inbox-icon;
+        }
+        &[data-id='#trash']:before {
+            @extend %trash-icon;
+        }
+        &:hover {
+            &:before,
+            &[data-id='qiita']:before,
+            &[data-id='#inbox']:before,
+            &[data-id='#trash']:before {
+                color: #fff;
+            }
+        }
+    }
+}

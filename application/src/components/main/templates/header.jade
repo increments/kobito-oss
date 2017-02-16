@@ -1,0 +1,50 @@
+.contentHeader
+  - var pulldownArrangement = ['#inbox', 'qiita', '-', '*', '-', '#trash']
+  - var toItem = function(t) {return {text: t.name, id: t._id, onSelect: function(event) {this.dispatch('main:changeTeam', t._id); this.close();}};}
+  - var makeSep = function() {return {text: 'separator', id: '#separator' }}
+  - var pulldownItems = pulldownItemsFromTeams(teams, pulldownArrangement, toItem, makeSep)
+  Pulldown(
+    iconClass='fa fa-fw fa-caret-down'
+    className='team-pulldown contentHeader_item contentHeader_selectedTeam js-team-pulldown'
+    items=pulldownItems
+    labelText=selectedTeam.name
+    ref='teamPulldown'
+  )
+
+  if selectedTeam._id === '#trash'
+    i(
+      className='fa fa-trash contentHeader_item contentHeader_selectedTeam'
+      onClick=onClickDeleteAll
+    )
+      
+  if selectedTeam._id !== '#trash'
+    i.fa.fa-fw.fa-pencil-square-o.contentHeader_item.contentHeader_item-post(data-tooltip=__('New Item') onClick=onClickNew)
+
+  if isTeam
+    - var f = function(t) {return {text: t.name,id: t.staticId, onSelect: function(event) {this.dispatch('main:transition:to-editor-as-new-with-template', t.staticId); this.close();}};}
+    - var templateItems = templates.map(f);
+    if templateItems.length > 0
+      Pulldown(
+        iconClass='fa fa-file-text-o'
+        className='template-pulldown contentHeader_item'
+        items=templateItems
+        title=__('All templates')
+        ref='templatePulldown'
+      )
+    i.fa.fa-fw.fa-download.contentHeader_item.contentHeader_item-download(
+      data-tooltip=__('Fetch items from Qiita')
+      onClick=onClickSync
+    )
+    
+  .contentHeader_subMenu
+    if selectedItem
+      button.contentHeader_subMenu_item.contentHeader_home(onClick=onClickHome)
+        i.fa.fa-fw.fa-home(data-tooltip=__('Home'))
+
+    button.contentHeader_subMenu_item.contentHeader_setting(onClick=onClickSetting)
+      i.fa.fa-fw.fa-cog(data-tooltip=__('Preference'))
+
+    if !logined
+      .contentHeader_subMenu_item-btn.contentHeader_login(onClick=onClickLogin)
+        i.fa.fa-fw.fa-sign-in
+        | ログイン

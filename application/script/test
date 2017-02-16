@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+npm run coffeelint
+gulp tslint
+npm test
+(
+  cd api
+  npm test
+)
+# npm run test-e2e
+# scss-lint # need `gem install scss-lint`

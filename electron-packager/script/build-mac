@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+const packager = require("electron-packager");
+const pkg = require("../../application/package.json");
+
+packager({
+    name: "kobito",
+    dir: "./browser",// ソースフォルダのパス
+    out: "./dist",// 出力先フォルダのパス
+    icon: "./assets/icon.ico",// アイコンのパス
+    platform: "darwin",
+    arch: "x64",
+    version: "1.2.5",
+    overwrite: true,
+    asar: false,// asarパッケージ化
+    "app-version": pkg.version,
+    "app-copyright": "Copyright (C) 2017 Increments Inc."
+}, function (err, appPaths) {// 完了時のコールバック
+    if (err) console.log(err);
+    console.log("Done: " + appPaths);
+});

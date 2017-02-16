@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'QiitaSymbolFont';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/QiitaSymbolFont.woff') format('woff');
+}
+
+.qsf {
+    display: inline-block;
+    font: normal normal normal 14px/1 QiitaSymbolFont;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    transform: translate(0, 0);
+    &.qsf-logomark:before { content: '\e000'; }       // Qiita logomark (ex: favicon)
+    &.qsf-kaita-logomark:before { content: '\e001'; }     // Kaita logomark
+    &.qsf-qiita-o:before { content: '\e003'; }        // Outlined Qiita logo
+    &.qsf-qiita:before { content: '\e004'; }          // Qiita logo
+    &.qsf-team-o:before { content: '\e005'; }         // Outlined :Team logo
+    &.qsf-team:before { content: '\e006'; }           // :Team logo (:Team)
+    &.qsf-team-l:before { content: '\e007'; }         // :Team logo (Qiita:Team)
+    &.qsf-kaita:before { content: '\e008'; }         // Kaita logo with logomark
+    &.qsf-career:before { content: '\e009'; }         // Qiita:Career logo
+    &.qsf-increments:before { content: '\e00f'; }     // Increments logo
+}

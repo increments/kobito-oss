@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+grep -rn [^\x01-\x7E] ./src --exclude-dir=./src/fixtures/languages/ --exclude-dir=./src/styles
+exit $?
+grep -rn [^\x01-\x7E] ./src --exclude-dir=./src/fixtures/languages/ --exclude-dir=./src/styles

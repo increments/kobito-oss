@@ -1,0 +1,37 @@
+// dark
+$theme-base-color: #303030;
+
+// background colors
+$theme-background-color: #303030;
+$theme-header-background-color: #222;
+$theme-preview-background-color: #444;
+$theme-selected-background-color: #188bdd;
+$theme-disabled-background-color: #555;
+
+// text colors
+$theme-text-color: #ccc;
+$theme-sub-text-color: #999;
+$theme-strong-text-color: #fff;
+$theme-tag-text-color: #81c0c9;
+$theme-magical-text-color: #c188dd;
+$theme-link-color: #36b0e6;
+
+// scrollbar colors
+$theme-scrollbar-trac: #222;
+$theme-scrollbar-thumb: #555;
+
+// icon colors
+$theme-icon-color: #aaa;
+
+// border colors
+$theme-border-color: #252525;
+$theme-markdown-border-color: #888;
+
+// markdown colors
+$theme-blockquote-color: #555;
+$theme-blockquote-text-color: #888;
+$theme-table-header-color: #3a3a3a;
+$theme-table-border-color: #555;
+$theme-code-bg: #555;
+$theme-code-lang-bg: lighten($theme-code-bg, 8%);
+$theme-code-color: #fff;

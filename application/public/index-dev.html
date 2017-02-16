@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kobito</title>
+    <meta charset='utf-8' />
+    <link rel="stylesheet" href="css/default-theme.css" type="text/css" />
+    <script src='./js/markdown-editor.js'></script>
+    <script>
+      this.kaitaMode = 'development';
+      require('../lib/');
+    </script>
+  </head>
+  <body>
+    Now Loading…
+    <button onclick="require('remote').getCurrentWindow().openDevTools()">DevTools</button>
+  </body>
+</html>

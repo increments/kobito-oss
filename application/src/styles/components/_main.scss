@@ -1,0 +1,489 @@
+// Main scene
+
+$base-menu-height: 44px;
+
+#layout {
+    position: relative;
+    overflow: hidden;
+}
+
+.main {
+    height: 100%;
+    overflow: hidden;
+}
+
+.contentHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $base-menu-height;
+    line-height: $base-menu-height;
+    padding: 0;
+    border-bottom: 1px solid darken($theme-header-background-color, 3%);
+    background-color: $theme-header-background-color;
+    color: $theme-text-color;
+    z-index: $z-index-fixed-toolbar;
+    box-sizing: border-box;
+    &_teamSelect {
+        position: relative;
+        display: table-cell;
+        margin-right: 10px;
+        overflow: hidden;
+        vertical-align: middle;
+        transition: background-color .2s ease;
+        &:hover {
+            background-color: $theme-selected-background-color;
+        }
+        &_select {
+            width: 160px;
+            padding: 0 30px 0 15px;
+            cursor: pointer;
+            &:focus {
+                outline: none;
+            }
+        }
+        &_caret {
+            position: absolute;
+            top: 17px;
+            right: 10px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    }
+    &_item {
+        @include btn-text;
+        display: table-cell;
+        padding: 0 12px;
+        line-height: $base-menu-height;
+        vertical-align: middle;
+        font-size: 20px;
+        color: $theme-icon-color;
+        box-sizing: border-box;
+        &:hover {
+            color: $theme-strong-text-color;
+        }
+        .fa-file-text-o {
+            display: table-cell;
+            line-height: 44px;
+            font-size: 18px;
+        }
+    }
+    &_selectedTeam {
+        font-size: 18px;
+        padding-left: 9px;
+        color: $theme-strong-text-color;
+        .fa-caret-down  {
+            margin-right: 3px;
+        }
+    }
+    &_subMenu {
+        position: absolute;
+        top: -1px;
+        right: 10px;
+        &_item {
+            width: $base-menu-height;
+            height: $base-menu-height;
+            // Reset button style
+            margin: 0;
+            padding: 0;
+            border: none;
+            font: inherit;
+            background-color: transparent;
+            i {
+                @include btn-text;
+                font-size: 20px;
+                color: $theme-icon-color;
+                vertical-align: middle;
+                &:hover {
+                    color: $theme-strong-text-color;
+                }
+            }
+            &-btn {
+                width: auto;
+                display: inline-block;
+                color: $theme-icon-color;
+                border: 1px solid darken($theme-border-color, 10%);
+                border-radius: 3px;
+                line-height: 1;
+                font-size: 13px;
+                margin-left: 5px;
+                padding: 9px 6px 7px;
+                background-color: darken($theme-header-background-color, 5%);
+                cursor: pointer;
+                transition: background .2s ease, border-color 0.2s ease;
+                &:hover {
+                    background-color: $theme-header-background-color;
+                }
+            }
+        }
+    }
+}
+
+.contentBody {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 45px;
+    z-index: $z-index-base;
+    .item-toolbar {
+      padding-left: 45px;
+    }
+
+    &_titles {
+        box-sizing: border-box;
+        float: left;
+        width: 300px;
+        max-width: 300px;
+        height: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0 0 45px;
+        border-right: 1px solid $theme-border-color;
+        &_search {
+            position: relative;
+            height: 50px;
+            padding: 10px 0;
+            border-bottom: 1px solid $theme-border-color;
+            background-color: $theme-background-color;
+            box-sizing: border-box;
+            .fa-search {
+                position: absolute;
+                top: 19px;
+                left: 15px;
+                font-size: 12px;
+                color: $theme-text-color;
+            }
+        }
+        &_searchInput {
+            width: 280px;
+            height: 30px;
+            margin: 0 10px;
+            padding: 5px 5px 5px 27px;
+            line-height: 30px;
+            font-size: 14px;
+            border: 0;
+            box-sizing: border-box;
+            background-color: $theme-background-color;
+            color: $theme-text-color;
+            font-family: inherit;
+        }
+        &_listWrapper {
+            position: relative;
+            height: 100%;
+            margin-top: -50px;
+            padding-bottom: 50px;
+            box-sizing: border-box;
+        }
+    }
+    &_preview {
+        display: block;
+        overflow: auto;
+        height: 100%;
+        min-height: 100%;
+        margin-left: 300px;
+        padding-bottom: 45px;
+        background-color: $theme-preview-background-color;
+        box-sizing: border-box;
+        &_title {
+            max-width: 85%;
+            margin: 0 auto;
+            padding: 80px 40px 30px;
+            font-size: 32px;
+            line-height: 1.3;
+            text-rendering: optimizeLegibility;
+            color: $theme-text-color;
+            -webkit-user-select: text;
+        }
+        .markdown-content {
+            max-width: 85%;
+            margin: 0 auto;
+            padding: 0 40px 30px;
+            opacity: 1;
+
+            &.start-showing {
+              opacity: 0;
+            }
+            &.showing-done {
+              opacity: 1;
+              transition: opacity .07s ease-in-out;
+            }
+        }
+    }
+    &_blank {
+        position: relative;
+        height: 100%;
+        overflow-y: auto;
+        padding: 40px;
+        box-sizing: border-box;
+        color: $theme-text-color;
+        &_title {
+            font-size: 84px;
+            color: $theme-text-color;
+        }
+        &_version {
+            margin-left: 5px;
+            color: $theme-sub-text-color;
+        }
+        &_loginBtn {
+            @include btn-positive;
+            margin-top: 15px
+        }
+        &_loginIcon {
+            font-size: 18px;
+            vertical-align: middle;
+            margin-right: 5px;
+            color: #fff;
+        }
+        &_newVersion {
+            margin-top: 20px;
+            padding-top: 30px;
+            border-top: 1px solid $theme-markdown-border-color;
+        }
+        &_newVersionText {
+            display: inline-block;
+            margin: 0 10px 0 0;
+            font-size: 14px;
+            color: $theme-magical-text-color;
+        }
+        &_newVersionBtn {
+            @include btn-default;
+        }
+        &_protip {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid $theme-markdown-border-color;
+        }
+        &_protipTitle {
+            display: inline-block;
+            padding: 2px 5px;
+            background-color: #5cd891;
+            border-radius: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+        }
+        &_protipList {
+            margin: 0;
+            li {
+                font-size: 14px;
+                margin-top: 7px;
+            }
+        }
+        &_section {
+            margin-bottom: 30px;
+        }
+        &_sectionTitle {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: $theme-selected-background-color;
+            border-radius: 2px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+            .contentBody_blank_announce & {
+                background-color: $notice-color;
+            }
+        }
+        &_announceContent a{
+            color: $theme-link-color;
+            text-decoration: none;
+        }
+        &_changelog {
+            .markdown-content {
+                max-width: 100%;
+                max-height: 300px;
+                overflow-y: auto;
+                margin: 10px 0 0 0;
+                padding: 0 20px 20px;
+                background-color: $theme-blockquote-color;
+                border-radius: 4px;
+                h1 { display: none; }
+                h2:nth-child(2) { margin-top: 20px; }
+                font-size: 90%;
+            }
+        }
+        &_footer {
+            border-top: 1px solid $theme-border-color;
+            padding-top: 20px;
+        }
+        &_feedback {
+            @include btn-default;
+        }
+    }
+    .markdown-editor {
+        height: 100%;
+        .CodeMirror-wrap {
+            padding-top: 20px;
+        }
+    }
+}
+.previewToolbar {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 0 320px 0 20px;
+    border-bottom: 1px solid $theme-border-color;
+    background-color: $theme-preview-background-color;
+    box-sizing: border-box;
+    z-index: $z-index-fixed-toolbar;
+    &_syncStatus {
+        float: left;
+    }
+    &_syncedAt {
+        margin-left: 8px;
+        color: $theme-sub-text-color;
+    }
+    &_actions {
+        float: right;
+    }
+    &_item {
+        @include btn-text;
+        line-height: 50px;
+        padding: 0 0 0 25px;
+        vertical-align: middle;
+        font-size: 20px;
+        color: $theme-icon-color;
+        display: inline-block;
+        &:first-child {
+            padding-left: 0;
+        }
+        &:hover {
+            color: $theme-strong-text-color;
+        }
+        &_moveItem {
+            font-size: 14px;
+        }
+        &.kaiticon:before {
+            opacity: .6;
+        }
+        &.kaiticon:hover:before {
+            opacity: 1;
+        }
+    }
+    &_btn {
+        @include btn-default;
+        display: inline-block;
+        box-sizing: border-box;
+        line-height: 32px;
+        margin-top: 8px;
+        padding: 0 10px;
+    }
+    &_synced {
+        display: inline-block;
+        line-height: 50px;
+        padding: 0 10px;
+        font-size: 13px;
+        color: $theme-text-color;
+        i { color: $color-synced; }
+    }
+    &_coediting {
+        @extend .previewToolbar_btn;
+        margin-left: 10px;
+        color: $theme-text-color;
+        i { color: $theme-icon-color; }
+    }
+    &_coedited {
+        display: inline-block;
+        line-height: 50px;
+        margin-right: 10px;
+        padding: 0 10px;
+        font-size: 13px;
+        color: $theme-text-color;
+        i { color: $brand-color-qiita; }
+    }
+}
+.alertConflict {
+    padding: 20px 40px;
+    border-bottom: 1px solid $theme-border-color;
+    background-color: $theme-header-background-color;
+    &_message {
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: $theme-text-color;
+        &_title {
+            margin-bottom: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            color: $color-broken;
+        }
+    }
+    &_btn {
+        @include btn-default;
+        margin-right: 10px;
+    }
+}
+
+.titleList {
+    height: 100%;
+    margin-top: 50px;
+    padding-left: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    &_item {
+        @include break-word;
+        margin: 0;
+        padding: 12px 15px 10px;
+        border-bottom: 1px solid $theme-border-color;
+        background-color: $theme-background-color;
+        &.selected {
+            background-color: $theme-selected-background-color;
+            color: #fff;
+        }
+        &.selected & {
+            &_title { color: #fff; }
+            &_tag { color: #d1eeff; }
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &_menuIcon {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0 15px 0 0;
+            font-size: 11px;
+            &-synced { color: $color-synced; }
+            // &-upload { color: $color-upload; }
+            &-broken { color: $color-broken; }
+        }
+        &_titleBlock {
+            display: table-cell;
+        }
+        &_title {
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            font-size: 14px;
+            font-weight: normal;
+            color: $theme-text-color;
+            &-blank {
+                color: $theme-text-color;
+            }
+        }
+        &_tagsContainer {
+            margin-top: 1px;
+            line-height: 1;
+        }
+        &_tag {
+            margin: 0 10px 0 0;
+            padding: 0;
+            border: 0;
+            background-color: transparent;
+            color: $theme-tag-text-color;
+            font-family: inherit;
+            font-size: 12px;
+            line-height: 1.3;
+        }
+        &_menu {
+            margin-top: 10px;
+        }
+    }
+    &_blank {
+        padding: 15px;
+        color: $theme-sub-text-color;
+        font-weight: normal;
+        font-size: 13px;
+        text-align: center;
+    }
+}

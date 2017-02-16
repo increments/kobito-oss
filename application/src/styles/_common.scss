@@ -1,0 +1,131 @@
+$fa-font-path: "fonts"; // from public/ to public/fonts
+@import "variables/common";
+@import "mixins";
+@import "../../node_modules/font-awesome/scss/font-awesome";
+@import "fonts";
+@import "markdown_content";
+@import "codemirror_addon_dialog";
+@import "twemoji";
+@import "components/main";
+@import "components/edit";
+@import "components/config";
+@import "components/popup";
+@import "components/pulldown";
+@import "components/pulldown_team_icon";
+@import "components/webview";
+@import "kaiticon";
+
+// Normalize (Should be replaced by normalize.css.)
+
+body {
+    margin: 0;
+}
+
+select {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+input {
+    outline: 0;
+}
+
+button {
+    font-family: inherit;
+    &:hover:focus,
+    &:active:focus {
+        outline: 0 !important;
+    }
+}
+
+// Common styles
+
+html,body {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    overflow: hidden;
+    background-color: $theme-background-color;
+    -webkit-user-select: none;
+    font-family: $base-font-family;
+}
+
+.narrow-scrollbar {
+    &::-webkit-scrollbar {
+        overflow: hidden;
+        width: 6px;
+
+        &:horizontal {
+            height: 1px;
+        }
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        background: $theme-scrollbar-trac;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $theme-scrollbar-thumb;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: $theme-scrollbar-trac;
+    }
+}
+
+// Tooltip for icons
+i.fa,
+i.kaiticon,
+i.qsf {
+    @include tooltip;
+}
+
+// Hints
+.CodeMirror-hints {
+    min-width: 160px !important;
+    font-size: 13px !important;
+    z-index: $z-index-hints !important;
+}
+.CodeMirror-hint {
+    box-sizing: border-box;
+    line-height: 1.5 !important;
+    padding: 6px 12px !important;
+    border-bottom: 1px solid #eee;
+    font-family: $base-font-family !important;
+    font-weight: bold;
+    color: #333 !important;
+    &:last-child {
+        border-bottom-color: #fff;
+    }
+}
+.CodeMirror-hint-active {
+    box-sizing: border-box;
+    background-color: $theme-selected-background-color !important;
+    border-bottom-color: #fff !important;
+    color: #fff !important;
+}
+
+// Oneliner CodeMirror
+.CodeMirror.cm-s-oneline {
+    height: 22px !important;
+    overflow: hidden;
+    .CodeMirror-vscrollbar {
+        display: none !important;
+    }
+    .CodeMirror-lines {
+        padding: 0 !important;
+    }
+}
