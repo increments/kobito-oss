@@ -4,17 +4,17 @@ const pkg = require("../../application/package.json");
 
 packager({
     name: "kobito",
-    dir: "./browser",// ソースフォルダのパス
-    out: "./dist",// 出力先フォルダのパス
-    icon: "./assets/icon.ico",// アイコンのパス
+    dir: "./browser",
+    out: "./dist",
+    icon: "./assets/icon.ico",
     platform: "darwin",
     arch: "x64",
-    version: "1.2.5",
+    version: "1.6.0",
     overwrite: true,
-    asar: false,// asarパッケージ化
+    asar: true,
     "app-version": pkg.version,
     "app-copyright": "Copyright (C) 2017 Increments Inc."
-}, function (err, appPaths) {// 完了時のコールバック
+}, function (err, appPaths) {
     if (err) console.log(err);
     console.log("Done: " + appPaths);
 });

@@ -17,7 +17,7 @@ app.on('ready', function() {
   })
   var url;
   if (process.env.ENV == 'production') {
-    url = path.join('file://', __dirname, "app/index-elecron.html");
+    url = path.join('file://', __dirname, "app.asar/index-electron.html");
   } else {
     url = path.join('file://', __dirname, "../../application/public", "index-dev.html");
   }

@@ -9,7 +9,7 @@ packager({
     icon: "./assets/kobito.ico",// アイコンのパス
     platform: "win32",
     arch: "ia32",
-    version: "1.2.5",
+    version: "1.6.0",
     overwrite: true,
     asar: false,// asarパッケージ化
     "app-version": pkg.version,
