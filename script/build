@@ -2,5 +2,5 @@
 
 (
   cd electron-packager
-  script/setup
+  ENV=production script/setup
 )

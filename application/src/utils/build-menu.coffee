@@ -1,6 +1,6 @@
 menus = require('../fixtures/default-menus')
 
-if global.process?.env?.ENV is 'development'
+if global.process?.env?.ENV isnt 'production'
   menus.push {
     label: __ 'Develop'
     submenu: [
@@ -63,7 +63,7 @@ macEditMenu =
 module.exports = (mode) ->
   return unless global.require
   metaKey =
-    if global.process.env.ENV is 'development'
+    if global.process.platform is 'darwin'
       'Cmd'
     else
       'Ctrl'
