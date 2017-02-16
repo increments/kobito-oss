@@ -12,9 +12,9 @@ class Login extends Arda.Context<d.Props, d.State, d.Template> {
   }
 
   public expandComponentProps(props, state) {
-    var pkg = require('../../../package.json');
+    var config = require('../../../../config');
     var propStr = qs.stringify({
-      client_id: pkg.appId,
+      client_id: config.clientId,
       scope: 'read_qiita write_qiita read_qiita_team write_qiita_team',
       state: 'foo'
     });

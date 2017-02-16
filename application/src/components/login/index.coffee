@@ -1,5 +1,4 @@
 template = require './template'
-pkg = require '../../../package.json'
 
 detectCodeFromUrl = (url) =>
   if matched = url.match /code=[a-z0-9]+/g
@@ -7,10 +6,11 @@ detectCodeFromUrl = (url) =>
   null
 
 login = (code) ->
+  config = require '../../../../config'
   Qiita.setEndpoint('https://qiita.com')
   Qiita.Resources.AccessToken.create_access_token(
-    client_id: pkg.appId,
-    client_secret: pkg.appSecret
+    client_id: config.clientId,
+    client_secret: config.clientSecret
     code: code
   )
   .then ({token}) ->

@@ -9,8 +9,6 @@
     "test": "mocha --require espower-coffee/guess test/spec-helper.coffee test/components/*.coffee test/contexts/*.coffee test/utils/*.coffee"
   },
   "author": "Increments Inc.",
-  "appId": "<your token>",
-  "appSecret": "<your secret>",
   "dbVersion": "2",
   "dependencies": {
     "arda": "0.13.1",

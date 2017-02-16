@@ -8,7 +8,7 @@ if global.process?.env?.ENV isnt 'production'
         label: 'devTools'
         key: 'Cmd+Alt+I'
         click: ->
-          global.require('remote').getCurrentWindow().openDevTools()
+          global.require('electron').remote.getCurrentWindow().openDevTools()
       }
       {
         label: 'Reload'

@@ -11,12 +11,12 @@ function subscriber(context, subscribe) {
   subscribe('context:disposed', () => Mousetrap.unpause());
   subscribe('context:paused',   () => Mousetrap.unpause());
   subscribe('login:finish-login-with-code', (code: string) => {
-    var pkg = require('../../../package.json');
+    var config = require('../../../../config.json');
     app.track('login');
 
     Qiita.Resources.AccessToken.create_access_token({
-      client_id: pkg.appId,
-      client_secret: app.appSecret,
+      client_id: config.clientId,
+      client_secret: config.clientSecret,
       code: code
     }).then(data => {
       var token = data.token;
