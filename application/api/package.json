@@ -19,6 +19,6 @@
     "react": "^0.13.3",
     "sinon": "^1.14.1",
     "stone-skin": "^0.1.2",
-    "typescript": "1.5.0-beta"
+    "typescript": "1.5"
   }
 }
