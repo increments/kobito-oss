@@ -1,5 +1,13 @@
 # Kaita
 
+Markdown Processor built on Electron
+
+## CAUTION
+
+This repo includes partial and modified sources to publish from http://kobito.qiita.com/win .
+
+Changes to this repo will not be applied to released one.
+
 ## Development
 
 ```sh
