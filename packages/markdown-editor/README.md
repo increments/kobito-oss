@@ -7,9 +7,8 @@ Fork and setup for your use.
 Build
 
 ```
-$ npm install -g webpack
-$ npm install
-$ gulp build
+$ yarn install
+$ yarn run build
 ```
 
 Take it.
