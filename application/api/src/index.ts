@@ -1,4 +1,3 @@
-///<reference path='../typings/bundle.d.ts' />
 ///<reference path='stone-skin.d.ts' />
 ///<reference path='../../node_modules/qiita-js/dist/qiita.d.ts' />
 ///<reference path='init.ts' />

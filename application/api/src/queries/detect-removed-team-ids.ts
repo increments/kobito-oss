@@ -11,7 +11,7 @@ module kaita.queries {
 
         // search team id not in server
         currentTeamIds.forEach(id => {
-          if (!_.include(serverTeamIds, id)) {
+          if (!_.includes(serverTeamIds, id)) {
             removedTeamIds.push(id);
           }
         });

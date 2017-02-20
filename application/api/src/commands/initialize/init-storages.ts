@@ -1,18 +1,26 @@
+interface Global {
+  Item: any,
+  Team: any,
+  Template: any,
+  Username: any,
+  Log: any
+}
 module kaita.commands.initialize {
   var StoneSkin = require('stone-skin/with-tv4');
+  const g: any = global
   export function initStorages(dbVersion) {
-    global.Item     = new storages.Item();
-    global.Team     = new storages.Team();
-    global.Template = new storages.Template();
-    global.Username = new storages.Username();
-    global.Log      = new storages.Log();
+    g.Item     = new storages.Item();
+    g.Team     = new storages.Team();
+    g.Template = new storages.Template();
+    g.Username = new storages.Username();
+    g.Log      = new storages.Log();
 
     return Promise.all([
-      global.Item.ready,
-      global.Team.ready,
-      global.Template.ready,
-      global.Username.ready,
-      global.Log.ready
+      g.Item.ready,
+      g.Team.ready,
+      g.Template.ready,
+      g.Username.ready,
+      g.Log.ready
     ])
     .then(() => {
       return StoneSkin.utils.setupWithMigrate(dbVersion, {

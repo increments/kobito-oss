@@ -1,11 +1,8 @@
 #!/usr/bin/env sh
 
-npm run coffeelint
-gulp tslint
-npm test
+yarn test
 (
   cd api
-  npm test
+  yarn install
+  yarn test
 )
-# npm run test-e2e
-# scss-lint # need `gem install scss-lint`
