@@ -16,7 +16,7 @@
       className='fa fa-trash contentHeader_item contentHeader_selectedTeam'
       onClick=onClickDeleteAll
     )
-      
+
   if selectedTeam._id !== '#trash'
     i.fa.fa-fw.fa-pencil-square-o.contentHeader_item.contentHeader_item-post(data-tooltip=__('New Item') onClick=onClickNew)
 
@@ -35,7 +35,7 @@
       data-tooltip=__('Fetch items from Qiita')
       onClick=onClickSync
     )
-    
+
   .contentHeader_subMenu
     if selectedItem
       button.contentHeader_subMenu_item.contentHeader_home(onClick=onClickHome)
@@ -44,7 +44,7 @@
     button.contentHeader_subMenu_item.contentHeader_setting(onClick=onClickSetting)
       i.fa.fa-fw.fa-cog(data-tooltip=__('Preference'))
 
-    if !logined
+    if isElectron && !logined
       .contentHeader_subMenu_item-btn.contentHeader_login(onClick=onClickLogin)
         i.fa.fa-fw.fa-sign-in
         | ログイン

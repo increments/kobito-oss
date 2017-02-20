@@ -26,7 +26,7 @@ module.exports = React.createClass
   mixins: [Arda.mixin]
   render: ->
     # rename tags to _tags for jade registered propery name
-    template _.extend {}, @, @props
+    template _.extend {isElectron: !!global.global}, @, @props
 
   onClickSetting: (event) ->
     event.stopPropagation()
