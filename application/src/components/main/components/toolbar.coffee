@@ -99,7 +99,7 @@ module.exports = React.createClass
         'gray';
 
     # rename tags to _tags for jade registered propery name
-    template _.extend {}, @, @props, @props.item,
+    template _.extend {isElectron: !!global.global}, @, @props, @props.item,
       _tags: @props.item.tags,
       statusColor: statusColor
       formatedSyncedAt: m(@props.item.synced_at * 1000).format('MM/DD HH:mm')

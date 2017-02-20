@@ -59,7 +59,7 @@ if !conflict_item
           title=__('Move Item')
         )
       if item.teamId === '#trash'
-      
+
         i.fa.fa-trash.previewToolbar_item.previewToolbar_delete(
           data-tooltip=__('Delete')
           onClick=onClickDelete
@@ -91,21 +91,22 @@ if !conflict_item
           data-tooltip=__('Send items to the trash')
           onClick=onClickDelete
           data-item-id= _id
-        ) 
-        i.fa.fa-clipboard.previewToolbar_item(
-          data-tooltip=__('Copy to clipboard')
-          onClick=onClickClipboard
         )
-        i.kaiticon.kaiticon-export.previewToolbar_item.previewToolbar_edit.tooltip-right-aligned(
-          data-tooltip=__('Export')
-          onClick=onClickExport
-          data-item-id= _id
-        )
-        i.fa.fa-external-link-square.previewToolbar_item.tooltip-right-aligned(
-          data-tooltip=__('Preview with an external window')
-          onClick=onClickOpenExternal
-          data-item-id= _id
-        )
+        if isElectron
+          i.fa.fa-clipboard.previewToolbar_item(
+            data-tooltip=__('Copy to clipboard')
+            onClick=onClickClipboard
+          )
+          i.kaiticon.kaiticon-export.previewToolbar_item.previewToolbar_edit.tooltip-right-aligned(
+            data-tooltip=__('Export')
+            onClick=onClickExport
+            data-item-id= _id
+          )
+          i.fa.fa-external-link-square.previewToolbar_item.tooltip-right-aligned(
+            data-tooltip=__('Preview with an external window')
+            onClick=onClickOpenExternal
+            data-item-id= _id
+          )
         if syncedItemId
           i.qsf.qsf-logomark.previewToolbar_item.previewToolbar_item-openQiita.tooltip-right-aligned(
             data-tooltip=__('Open the Item in Qiita')
@@ -125,12 +126,12 @@ else
       onClick=onClickResolveConflict
     )
       = __('Select the item you prefer')
-    
+
     button.alertConflict_btn(
       onClick=onClickOpenQiita
     )
       = __('Check item on Qiita')
-    
+
     i.fa.fa-clipboard.alertConflict_btn(
       data-tooltip= __('Copy to clipboard')
       onClick=onClickClipboard
