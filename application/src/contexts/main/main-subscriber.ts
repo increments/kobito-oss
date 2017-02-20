@@ -38,7 +38,8 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
         var body = fs.readFileSync(filepath).toString();
         return kaita.commands.createNewItem(title, body, [], context.state.selectedTeamId);
       }))
-      .then((items: kaita.entities.Item[]) => {
+      // .then((items: kaita.entities.Item[]) => {
+      .then((items: any) => {
         context.update(s => {
           s.selectedItemId = items[0]._id;
         });

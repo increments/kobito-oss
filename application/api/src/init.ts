@@ -1,1 +1,1 @@
-global.StoneSkin = require('stone-skin/tv4')
+global.StoneSkin = require('stone-skin/with-tv4')

@@ -20,7 +20,7 @@ gulp.task 'build', [
 
 # TypeScript
 gulp.task 'build:ts', ['build:api'], shell.task [
-  'node_modules/.bin/tsc -d -m commonjs  --preserveConstEnums -t es5 --sourceMap --outDir lib src/application.ts'
+  'node_modules/.bin/tsc'
 ]
 
 gulp.task 'npm:install', shell.task [
