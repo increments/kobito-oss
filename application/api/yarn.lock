@@ -1333,9 +1333,9 @@ type-name@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/type-name/-/type-name-1.0.1.tgz#49af8e6663682c7aa501dca6832d90c02ebcf1b2"
 
-typescript@1.5:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-1.5.3.tgz#ce35e55f75b7a8d0ed571b503bd0a57157e523f7"
+typescript@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.6.tgz#40c7e6e9e5da7961b7718b55505f9cac9487a607"
 
 update-notifier@0.4.0:
   version "0.4.0"
