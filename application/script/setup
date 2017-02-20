@@ -1,9 +1,7 @@
 #!/usr/bin/env sh
 
-# yarn install
+yarn install
 
-(
-  $(yarn bin)/tsc -p api
-)
+node_modules/.bin/tsc -p api
 
-$(npm bin)/gulp build:web
+node_modules/.bin//gulp build:web
