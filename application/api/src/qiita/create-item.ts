@@ -11,7 +11,8 @@ module kaita.qiita {
     return new Promise((done, reject) => {
       Item.find(itemId).then(item => {
         setEndpoint(teamId);
-        Qiita.Resources.Item.create_item({
+
+        Qiita.Resources.Item.create_item(<any>{
           title: item.title,
           body: item.body,
           tags: item.tags,

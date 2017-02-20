@@ -13,9 +13,6 @@
     },
     "lodash/lodash.d.ts": {
       "ref": "7d2f0aa875cc3bc41f3567e3ff99d344df986155"
-    },
-    "es6-promise/es6-promise.d.ts": {
-      "ref": "7d2f0aa875cc3bc41f3567e3ff99d344df986155"
     }
   }
 }

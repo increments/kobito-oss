@@ -12,7 +12,7 @@ module kaita.qiita {
       }
 
       setEndpoint(teamId);
-      return Qiita.Resources.Item.update_item(item.syncedItemId, {
+      return Qiita.Resources.Item.update_item(item.syncedItemId, <any>{
         title: item.title,
         body: item.body,
         tags: item.tags,

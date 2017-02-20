@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "yarn install & yarn run setup:dtsm",
     "setup:dtsm": "dtsm install",
-    "build": "tsc -t es5  --noEmitOnError -d --sourcemap -m commonjs --out dist/kaita.js src/index.ts",
+    "build": "tsc",
     "test": "mocha  --recursive -r espower-coffee/guess test/spec-helper.coffee \"test/**/*.coffee\""
   },
   "author": "Increments inc.",
