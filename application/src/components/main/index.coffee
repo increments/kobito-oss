@@ -20,7 +20,7 @@ module.exports = React.createClass
     if title
       title.innerHTML = this.props.selectedTeam?.name + ' - Kobito'
 
-    template _.extend {}, @, @props, @state,
+    template _.extend {isElectron: !!global.global}, @, @props, @state,
       version: require('../../../package').version
       announcements: app?._announcements ? []
 

@@ -41,7 +41,7 @@
           else
             h3.titleList_blank
               span= __('NO ITEM')
-            
+
     .contentBody_preview.narrow-scrollbar
       if selectedItem
         if onEdit
@@ -59,7 +59,7 @@
           .contentBody_blank_section
             i.qsf.qsf-kaita.contentBody_blank_title
             span.contentBody_blank_version=' v'+version
-            if !logined
+            if isElectron && !logined
               .contentBody_blank_login
                 button.contentBody_blank_loginBtn(onClick=onClickLogin)
                   i.qsf.qsf-logomark.contentBody_blank_loginIcon
@@ -90,7 +90,7 @@
               button.contentBody_blank_newVersionBtn(
                 onClick=onClickDownload
                 data-link=download_link
-              ) 
+              )
                 i.fa.fa-download(data-link=download_link)
                 span(data-link=download_link)
                   | &nbsp;
