@@ -13,7 +13,6 @@ module kaita.storages.singletons {
   var ALLOW_TO_SEND_INFO = 'send-user-info';
   var BOOT_COUNT = 'boot-count';
   var USE_DEV_SERVER = 'use-dev-server';
-  var TRACKING_ID = 'tracking-id';
 
   export class Config {
     public static getInstance(): Config {
@@ -34,16 +33,6 @@ module kaita.storages.singletons {
 
     public setLoginId(id: string) {
       this.store.setItem(LOGIN_ID, id);
-    }
-
-    public getTrackingId(): string {
-      return this.store.getItem(TRACKING_ID) || this.resetTrackingId();
-    }
-
-    resetTrackingId(): string {
-      var id = uuid.v4();
-      this.store.setItem(TRACKING_ID, id);
-      return id;
     }
 
     public getAPIToken() {

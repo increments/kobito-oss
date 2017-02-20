@@ -26,11 +26,7 @@ class Application {
   }
 
   track(key: string, obj: any = {}) {
-    obj.version = pkg.version;
-    if (global.mixpanel && app.config.getAllowToSendInfo()) {
-      global.mixpanel.identify(app.config.getTrackingId());
-      global.mixpanel.track(key, obj);
-    }
+    // Track user data here
   }
 }
 export = Application;
