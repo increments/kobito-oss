@@ -2,6 +2,7 @@ var m = require('moment');
 import d = require('./main-defs');
 
 var pkg = require('../../../package.json');
+const g: any = global;
 
 import SyncItemResultStatus = kaita.commands.sync.SyncItemResultStatus;
 export function syncItemsIfNotExistWithCover(targetTeamId: string, context) {
@@ -234,10 +235,10 @@ export function askDeleteAll(context) {
 }
 
 export function exportItem(itemId) {
-  var fs = global.require('fs');
+  var fs = g.require('fs');
   Item.find(itemId)
   .then(item => {
-    var filepath = global.require('remote').require('dialog').showSaveDialog({
+    var filepath = g.require('remote').require('dialog').showSaveDialog({
       title: __('Save')
     });
     if (filepath) {

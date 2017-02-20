@@ -1,11 +1,7 @@
 var zoomRate = 1.0;
+const g: any = global;
 var subscriber = (context, subscribe) => {
-  var webFrame;
-  try {
-    webFrame = global.require('web-frame');
-  } catch(e) {
-    webFrame = global.require('electron').webFrame;
-  }
+  var webFrame = g.require('electron').webFrame;
   subscribe('zoom:plus', () => {
     if (zoomRate >= 2.5) {
       return;

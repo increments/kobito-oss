@@ -4,6 +4,7 @@ import EditContext = require('../edit/edit-context');
 var path = require('path');
 
 import ui = require('./main-utils');
+const g: any = global
 
 var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   subscribe('main:update-query', (query: string) => {
@@ -19,12 +20,12 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   subscribe('main:open-files', () => {
     var dialog;
     try {
-      dialog = global.require('remote').require('dialog');
+      dialog = g.require('remote').require('dialog');
     } catch(e) {
-      dialog = global.require("electron").remote.dialog;
+      dialog = g.require("electron").remote.dialog;
     }
 
-    var fs = global.require('fs');
+    var fs = g.require('fs');
     var filepaths = dialog.showOpenDialog({
       filters: [
         {name: 'docs', extensions: ['md', 'markdown', 'txt']}

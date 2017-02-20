@@ -33,11 +33,13 @@
     "weakmap": "0.0.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.52",
+    "@types/node": "^7.0.5",
+    "@types/react": "^15.0.11",
     "brfs": "^1.4.0",
     "browserify": "^14.1.0",
     "cheerio": "^0.22.0",
     "coffee-script": "^1.9.0",
-    "dtsm": "^1.1.0",
     "envify": "^4.0.0",
     "espower-coffee": "^1.1.0",
     "factory-dog": "0.0.2",

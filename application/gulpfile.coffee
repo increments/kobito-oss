@@ -26,9 +26,9 @@ gulp.task 'build:ts', ['build:api'], shell.task [
 gulp.task 'npm:install', shell.task [
   'npm install'
 ]
+
 gulp.task 'build:api', shell.task [
-  'cd api; yarn setup'
-  'cd api; yarn build'
+  'node_modules/.bin/tsc -p api'
 ]
 
 gulp.task 'build:coffee', ->
