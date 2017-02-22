@@ -44,4 +44,6 @@ script/build-win
 
 ## License
 
+Twemoji is CC-BY 4.0 https://github.com/twitter/twemoji
+
 MIT
