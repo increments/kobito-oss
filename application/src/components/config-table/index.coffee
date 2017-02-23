@@ -1,5 +1,5 @@
 $ = React.createElement
-LinkedStateMixin = require('react/lib/LinkedStateMixin')
+LinkedStateMixin = require('react-addons-linked-state-mixin')
 module.exports = React.createClass
   mixins: [LinkedStateMixin]
 

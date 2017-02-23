@@ -46,4 +46,4 @@ describe "components/edit", ->
         tags: []
     }
 
-    assert component.getDOMNode().innerHTML isnt ''
+    assert component.innerHTML isnt ''

@@ -11,7 +11,7 @@
   "author": "Increments Inc.",
   "dbVersion": "2",
   "dependencies": {
-    "arda": "0.13.1",
+    "arda": "^0.16.0",
     "bluebird": "^3.4.7",
     "dompurify": "^0.8.2",
     "emcode": "git://github.com/uasi/emcode",
@@ -27,7 +27,9 @@
     "mousetrap": "^1.5.2",
     "qiita-js": "0.4.3",
     "qs": "^6.3.1",
-    "react": "^0.13.0",
+    "react": "^15.4.2",
+    "react-addons-linked-state-mixin": "^15.4.2",
+    "react-dom": "^15.4.2",
     "stone-skin": "0.1.2",
     "uuid": "^3.0.1",
     "weakmap": "0.0.6"
@@ -56,6 +58,7 @@
     "localStorage": "^1.0.3",
     "mocha": "^3.2.0",
     "power-assert": "^1.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.12.2",
     "typescript": "^2.1.6",
     "xmldom": "^0.1.19"

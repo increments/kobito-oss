@@ -32,7 +32,7 @@ module.exports = React.createClass
       console.log 'will change selected item id'
       now = Date.now()
       if now - lastItemPreviewTime < 500
-        node = @refs.mdcontent?.getDOMNode()
+        node = @refs.mdcontent?
         if node?
           clearTimeout(lastSetTimeoutId) if lastSetTimeoutId
           node.classList.add 'start-showing'
@@ -76,7 +76,7 @@ module.exports = React.createClass
     if @props.selectedItem? and @autoFocus
       @$container ?= jQuery('.titleList')
       $container = @$container
-      $item = jQuery(@refs.titleList.getDOMNode())
+      $item = jQuery(@refs.titleList)
         .find("[data-item-id=#{@props.selectedItem._id}]")
       containerTop = $container.offset().top
       itemTop      = $item.offset().top

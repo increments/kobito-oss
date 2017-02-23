@@ -34,7 +34,7 @@ module.exports = React.createClass
     , 100
 
   componentDidMount: ->
-    container = @refs.editorContainer.getDOMNode()
+    container = @refs.editorContainer
     self = this
     languages = require('../../fixtures/complete-languages.json')
 

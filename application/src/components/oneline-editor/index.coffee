@@ -13,7 +13,7 @@ module.exports = React.createClass
   componentDidMount: ->
     return if Env.mode is 'test'
 
-    container = @refs.editorContainer.getDOMNode()
+    container = @refs.editorContainer
     collect =
       if @props.autocomplete
         (cm, word) =>

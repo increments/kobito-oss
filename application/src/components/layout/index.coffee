@@ -16,12 +16,12 @@ module.exports = React.createClass
     templateProps: {}
 
   componentDidMount: ->
-    @popupRouter = new Arda.Router(Arda.DefaultLayout, @refs.popup.getDOMNode())
+    @popupRouter = new Arda.Router(Arda.DefaultLayout, @refs.popup)
     @popupRouter.pushContext(require('../../contexts/popup/popup-context'), {}).then (context) =>
       app.popup = context
       @popupRouter.emit 'popup:ready'
 
-    @loggerRouter = new Arda.Router(Arda.DefaultLayout, @refs.logger.getDOMNode())
+    @loggerRouter = new Arda.Router(Arda.DefaultLayout, @refs.logger)
     @loggerRouter.pushContext(require('../../contexts/logger/logger-context'), {}).then (context) =>
       app.logger = context
       @loggerRouter.emit 'logger:ready'

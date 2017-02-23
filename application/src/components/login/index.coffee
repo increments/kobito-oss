@@ -66,7 +66,7 @@ module.exports = React.createClass
 
   componentDidMount: ->
     Mousetrap.pause()
-    webview = @refs.webview.getDOMNode()
+    webview = @refs.webview
     webview.addEventListener 'did-get-redirect-request', (e) =>
       code = detectCodeFromUrl(e.newUrl || e.newURL)
       return unless code?
@@ -77,7 +77,7 @@ module.exports = React.createClass
         app.popup.close()
 
   onClickBack: ->
-    webview = @refs.webview.getDOMNode()
+    webview = @refs.webview
     webview.remove()
     app.router.popContext()
 

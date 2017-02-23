@@ -2,6 +2,7 @@
 
 declare var app: Application;
 var pkg = require('../package');
+var Arda = require('arda')
 
 // for arda
 import MainContext   = require('./contexts/main/main-context');

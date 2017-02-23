@@ -16,4 +16,4 @@ describe "components/main", ->
       logined: false
     }
 
-    assert component.getDOMNode().innerHTML isnt ''
+    assert component.innerHTML isnt ''

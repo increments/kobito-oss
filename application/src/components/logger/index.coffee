@@ -1,5 +1,5 @@
 ReactTransitionGroup = require 'react/lib/ReactTransitionGroup'
-LinkedStateMixin = require 'react/lib/LinkedStateMixin'
+LinkedStateMixin = require 'react-addons-linked-state-mixin'
 
 template = require './logger-template'
   .locals {ReactTransitionGroup}

@@ -14,7 +14,6 @@
     "espower-coffee": "^0.10.0",
     "mocha": "^2.2.5",
     "power-assert": "^0.11.0",
-    "react": "^0.13.3",
     "sinon": "^1.14.1",
     "stone-skin": "^0.1.2"
   }

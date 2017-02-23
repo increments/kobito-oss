@@ -1,3 +1,4 @@
+ReactDOM = require 'react-dom'
 module.exports = React.createClass
   mixins: [Arda.mixin]
   render: ->
@@ -17,7 +18,8 @@ module.exports = React.createClass
   _update: ->
     # set onclick handler to footnotes
     # here be dragons!
-    self = @getDOMNode()
+    # self = @getDOMNode()
+    self = ReactDOM.findDOMNode(@)
     jQuery(self).find('sup[id^="fnref"] > a').off('click').on 'click', (ev) =>
       @$container ?= jQuery(self.parentNode)
       hash = ev.target.hash # something like "#fn1"

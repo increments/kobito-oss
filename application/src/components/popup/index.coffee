@@ -5,13 +5,13 @@ template = require './template'
   .locals {ReactTransitionGroup}
 
 defaultKeymap = require '../../fixtures/default-keymap'
-LinkedStateMixin = require 'react/lib/LinkedStateMixin'
+LinkedStateMixin = require 'react-addons-linked-state-mixin'
 
 module.exports = React.createClass
   mixins: [Arda.mixin, actions, LinkedStateMixin]
   componentDidUpdate: ->
     if @props.type is 'search'
-      jQuery(@refs.query.getDOMNode()).focus()
+      jQuery(@refs.query).focus()
 
   getInitialState: ->
     checkedForUpdate: false

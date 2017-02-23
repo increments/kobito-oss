@@ -3,8 +3,8 @@ jsdom = require('jsdom').jsdom
 global.document  = jsdom('<html><body></body></html>')
 global.window    = document.defaultView
 global.navigator = window.navigator
-React = require 'react/addons'
-global.TestUtils = React.addons.TestUtils
+React = require 'react'
+global.TestUtils = require('react-addons-test-utils')
 global.Env = mode: 'test'
 
 global.DOMParser = require('xmldom').DOMParser

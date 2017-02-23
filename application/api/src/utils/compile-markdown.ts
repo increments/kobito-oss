@@ -1,5 +1,6 @@
 declare var React: any;
 var dompurify = require('dompurify')
+var ReactDOMServer = require('react-dom/server')
 
 module kobito.utils {
   var md2react = require('md2react');
@@ -26,7 +27,7 @@ module kobito.utils {
       if (this._lastHtml !== current) {
         this._lastHtml = current;
         if (this.refs.htmlWrapper != null) {
-          var node = this.refs.htmlWrapper.getDOMNode();
+          var node = this.refs.htmlWrapper;
           // avoid to touch null if iframe content does not ready
           if (node && node.contentDocument && node.contentDocument.body != null) {
             var inner = node.contentDocument.body.querySelector('#inner');
@@ -42,7 +43,7 @@ module kobito.utils {
     },
 
     componentDidMount() {
-      var node = this.refs.htmlWrapper.getDOMNode();
+      var node = this.refs.htmlWrapper;
       node.contentWindow.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => this._update(), 100);
       });
@@ -81,7 +82,7 @@ module kobito.utils {
   }
 
   export function compileMarkdown(md: string) {
-    return (<any>React).renderToStaticMarkup(_compile(md, dangerouslyWrapper));
+    return (<any>ReactDOMServer).renderToStaticMarkup(_compile(md, dangerouslyWrapper));
   }
 
   export function compileMarkdownForPreview(md: string) {

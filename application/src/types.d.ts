@@ -1,6 +1,6 @@
 ///<reference path='../typings/bundle.d.ts' />
 ///<reference path='../api/dist/kobito.d.ts' />
-///<reference path='../node_modules/arda/arda.d.ts' />
+///<reference path='../node_modules/arda/index.d.ts' />
 ///<reference path='../node_modules/qiita-js/dist/qiita.d.ts' />
 
 declare var _: any;
