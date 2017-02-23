@@ -1,4 +1,4 @@
-module kaita.commands {
+module kobito.commands {
   var m: any = require('moment');
   export function createNewItem(
     title: string,
@@ -7,7 +7,7 @@ module kaita.commands {
     teamId: string
   ) : Promise<entities.Item> {
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
     app.track('create-new-item');
 
     var now = m().unix();

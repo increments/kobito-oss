@@ -1,8 +1,8 @@
-module kaita.commands {
+module kobito.commands {
   export function deleteItem(itemId: string) {
     return Item.remove(itemId).then(() => {
       // Remove cache before add
-      kaita.queries.removeLastTimelineCache();
+      kobito.queries.removeLastTimelineCache();
     });
   }
 }

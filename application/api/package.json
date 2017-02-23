@@ -1,8 +1,8 @@
 {
-  "name": "kaita-api",
+  "name": "kobito-api",
   "version": "0.0.1",
   "description": "api",
-  "main": "dist/kaita.js",
+  "main": "dist/kobito.js",
   "scripts": {
     "test": "mocha  --recursive -r espower-coffee/guess test/spec-helper.coffee \"test/**/*.coffee\""
   },

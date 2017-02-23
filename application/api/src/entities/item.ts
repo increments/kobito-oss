@@ -1,4 +1,4 @@
-module kaita.entities {
+module kobito.entities {
   export interface Item {
     _id?: string;
     body: string;

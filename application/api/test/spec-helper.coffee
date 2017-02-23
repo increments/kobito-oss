@@ -26,7 +26,7 @@ schema = require './factory'
 
 global.stubDatabases = ->
   beforeEach ->
-    kaita.commands.initialize.initStorages()
+    kobito.commands.initialize.initStorages()
 
   afterEach ->
     Item.clear()

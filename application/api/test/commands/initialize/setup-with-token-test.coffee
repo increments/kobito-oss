@@ -4,7 +4,7 @@ describe 'setupWithToken', ->
       localStorage.clear()
 
     it 'throw', (done) ->
-      kaita.commands.initialize.setupWithToken()
+      kobito.commands.initialize.setupWithToken()
       .then -> done 1
       .catch -> done()
 
@@ -18,16 +18,16 @@ describe 'setupWithToken', ->
     context 'without id', ->
       beforeEach ->
         localStorage.removeItem('login-id')
-        @sinon.stub(kaita.commands, 'ensureUserId')
+        @sinon.stub(kobito.commands, 'ensureUserId')
           .returns Promise.resolve()
-        @sinon.stub(kaita.commands.sync, 'syncTeamsAndTemplates')
+        @sinon.stub(kobito.commands.sync, 'syncTeamsAndTemplates')
           .returns Promise.resolve()
 
       it 'ensure id', ->
-        kaita.commands.initialize.setupWithToken('xxx')
+        kobito.commands.initialize.setupWithToken('xxx')
         .then ->
-          assert kaita.commands.ensureUserId.called
-          assert kaita.commands.sync.syncTeamsAndTemplates.called
+          assert kobito.commands.ensureUserId.called
+          assert kobito.commands.sync.syncTeamsAndTemplates.called
           Team.all()
         .then (teams) ->
           assert teams.length is 2

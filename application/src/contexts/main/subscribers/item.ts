@@ -37,7 +37,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       // update
       item.title = title || __('No Title');
       item.body = body || '';
-      return kaita.commands.updateItem(item);
+      return kobito.commands.updateItem(item);
     });
   }
 
@@ -77,7 +77,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     if (context.state.selectedTeamId === '#trash') {
       return;
     }
-    kaita.commands.createNewItem('', '', [], context.state.selectedTeamId)
+    kobito.commands.createNewItem('', '', [], context.state.selectedTeamId)
     .then(item => {
       context.update(s => {
         s.selectedItemId = item._id;

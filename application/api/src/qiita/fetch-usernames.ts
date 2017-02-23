@@ -1,10 +1,10 @@
-module kaita.qiita {
+module kobito.qiita {
   export function fetchUsernames(teamId: string) {
     if (teamId === 'qiita') {
       return Promise.reject(new Error('Cannot fetch usernames from qiita'));
     }
 
-    return kaita.queries.isLocalTeam(teamId)
+    return kobito.queries.isLocalTeam(teamId)
     .then(isLocalTeam => {
       if (isLocalTeam) {
         return Promise.reject(new Error('Cannot fetch usernames from local team'));

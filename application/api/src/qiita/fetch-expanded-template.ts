@@ -1,8 +1,8 @@
-module kaita.qiita {
+module kobito.qiita {
   export function fetchExpandedTemplate(teamId: string, templateId: string)
   // : Promise<Qiita.Entities.ExpandedTemplate> // TODO: Fix this annotation
   : Promise<any> {
-    return kaita.queries.isLocalTeam(teamId)
+    return kobito.queries.isLocalTeam(teamId)
     .then(isLocal => {
       if (isLocal) {
         return (<any>Promise).reject(new Error('Local team cant sync'));

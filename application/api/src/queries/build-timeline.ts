@@ -1,9 +1,9 @@
-module kaita.queries {
+module kobito.queries {
   var _ = require('lodash');
 
-  var _lastItems: kaita.entities.Item[]  = null;
+  var _lastItems: kobito.entities.Item[]  = null;
 
-  export function getLastTimeline(): kaita.entities.Item[] {
+  export function getLastTimeline(): kobito.entities.Item[] {
     return _lastItems;
   }
 
@@ -34,7 +34,7 @@ module kaita.queries {
     filterQuery: string,
     sortType: boolean = false,
     forceUpdate: boolean = false
-  ): Promise<kaita.entities.Item[]> {
+  ): Promise<kobito.entities.Item[]> {
     var now = Date.now();
     if (
       lastBuiltQueries.teamId === teamId              // same id
@@ -51,7 +51,7 @@ module kaita.queries {
     var queries = filterQuery.split(' ').filter(i => i.length > 0);
     return Item.select(i => i.teamId === teamId)
     .then(_items => {
-      var items: kaita.entities.Item[] =
+      var items: kobito.entities.Item[] =
         _.sortBy(_items, i => - i.created_at)
         .filter(i => {
           if (filterQuery.length === 0) {

@@ -14,7 +14,7 @@ describe "components/edit", ->
     @sinon.stub Edit::, 'componentDidMount'
     @sinon.stub OnelineEditor::, 'componentDidMount'
     @sinon.stub MarkdownEditor::, 'componentDidMount'
-    @sinon.stub(kaita.queries, 'collectTagNames').returns Promise.resolve([])
+    @sinon.stub(kobito.queries, 'collectTagNames').returns Promise.resolve([])
 
   afterEach ->
     delete global.createMyEditor

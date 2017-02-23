@@ -84,7 +84,7 @@ module.exports = React.createClass
     itemId = event.target.dataset.itemId
     Item.find(itemId)
     .then (item) =>
-      kaita.commands.recoverFromTrash(itemId)
+      kobito.commands.recoverFromTrash(itemId)
     .then =>
       app.router.activeContext.update() # TODO: move
 
@@ -113,7 +113,7 @@ module.exports = React.createClass
           id: t._id
           onSelect: =>
             # console.log 'team', t
-            kaita.commands.transferItem(@props.item._id, t._id)
+            kobito.commands.transferItem(@props.item._id, t._id)
             .then =>
               app.router.activeContext.update (s) =>
                 s.selectedItemId = null

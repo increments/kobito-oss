@@ -1,4 +1,4 @@
-module kaita.queries {
+module kobito.queries {
   export function isLocalTeam(teamId: string)
   : Promise<boolean> {
     return Team.find(teamId)

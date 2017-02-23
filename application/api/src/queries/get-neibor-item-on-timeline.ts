@@ -1,11 +1,11 @@
-module kaita.queries {
+module kobito.queries {
   // Build by last timeline cache for performance
   export function getNeiborItemOnTimeline(
     teamId: string,
     filterQuery: string,
     itemId: string,
     amount: number
-  ): kaita.entities.Item {
+  ): kobito.entities.Item {
     var items = getLastTimeline();
 
     // no cache

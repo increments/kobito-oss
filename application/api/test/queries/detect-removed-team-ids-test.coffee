@@ -8,13 +8,13 @@ describe "src/queries/detect-removed-team-ids", ->
         {_id: 'foo2', name: "foo2", local: false}
       ]
 
-      @sinon.stub(kaita.qiita, "fetchTeams").returns Promise.resolve([
+      @sinon.stub(kobito.qiita, "fetchTeams").returns Promise.resolve([
         {id: 'foo1'}
         {id: 'foo2'}
       ])
 
     it "should be blank array", ->
-      kaita.queries.detectRemovedTeamIds()
+      kobito.queries.detectRemovedTeamIds()
       .then (ids) ->
         assert.deepEqual ids, []
 
@@ -25,11 +25,11 @@ describe "src/queries/detect-removed-team-ids", ->
         {_id: 'foo2', name: "foo2", local: false}
       ]
 
-      @sinon.stub(kaita.qiita, "fetchTeams").returns Promise.resolve([
+      @sinon.stub(kobito.qiita, "fetchTeams").returns Promise.resolve([
         {id: 'foo1'}
       ])
 
     it "should detect team id not on server", ->
-      kaita.queries.detectRemovedTeamIds()
+      kobito.queries.detectRemovedTeamIds()
       .then (ids) ->
         assert.deepEqual ids, ['foo2']

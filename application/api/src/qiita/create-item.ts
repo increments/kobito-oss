@@ -1,4 +1,4 @@
-module kaita.qiita {
+module kobito.qiita {
   var m = require('moment');
 
   export interface CreateItemOptions {
@@ -32,7 +32,7 @@ module kaita.qiita {
           item.coediting = options.coediting || false;
           item.remote_updated_at = m(qItem.updated_at).unix();
           app.track('qiita:create-item', {isQiita: teamId === 'qiita'});
-          return kaita.commands.updateItem(item).then(done);
+          return kobito.commands.updateItem(item).then(done);
         })
         .catch(e => {
           reject(e);

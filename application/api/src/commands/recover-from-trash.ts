@@ -1,8 +1,8 @@
-module kaita.commands {
+module kobito.commands {
   export function recoverFromTrash(itemId: string)
   : Promise<any> {
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
 
     return Item.find(itemId)
     .then(item => {

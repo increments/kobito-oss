@@ -1,4 +1,4 @@
-module kaita.queries {
+module kobito.queries {
   export function detectRemovedTeamIds(): Promise<string[]> {
     return queries.getTeamIds()
     .then(currentTeamIds => {

@@ -1,4 +1,4 @@
-module kaita.commands {
+module kobito.commands {
   export function transferItem(
     itemId: string,
     nextTeamId: string

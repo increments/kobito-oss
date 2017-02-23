@@ -11,7 +11,7 @@ import itemSubscriber      = require('./subscribers/item');
 var pkg = require('../../../package.json');
 
 var fs = require('fs');
-var CHANGELOG = kaita.utils.compileMarkdown(
+var CHANGELOG = kobito.utils.compileMarkdown(
   fs.readFileSync(__dirname + '/../../../CHANGELOG.md').toString()
 );
 
@@ -84,10 +84,10 @@ class MainContext extends Arda.Context<d.Props, d.State, d.Template> {
       }
     }
 
-    var selectedTeam = _.find((<kaita.entities.Team[]>state.teams),
+    var selectedTeam = _.find((<kobito.entities.Team[]>state.teams),
       team => team._id === state.selectedTeamId);
 
-    return kaita.queries.buildTimeline(state.selectedTeamId, state.filterQuery)
+    return kobito.queries.buildTimeline(state.selectedTeamId, state.filterQuery)
     .then(items => Promise.resolve({
       teams: state.teams,
       templates: templates,

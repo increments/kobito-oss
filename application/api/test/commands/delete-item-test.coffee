@@ -8,11 +8,11 @@ describe "src/commands/create-new-item", ->
       name: 'foo'
       local: true
     }).then ->
-      kaita.commands.createNewItem('title', 'body', [name: 'tag1'], 't1')
+      kobito.commands.createNewItem('title', 'body', [name: 'tag1'], 't1')
 
   it "should delete item", ->
     Item.all()
-    .then ([item]) -> kaita.commands.deleteItem(item._id)
+    .then ([item]) -> kobito.commands.deleteItem(item._id)
     .then -> Item.all()
     .then (items) ->
       assert items.length is 0

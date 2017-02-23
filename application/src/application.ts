@@ -15,10 +15,10 @@ import ContactContext = require('./contexts/contact/contact-context');
 class Application {
   router: Arda.Router;
   popup: Arda.Context<any, any, any>;
-  config:  kaita.storages.singletons.Config;
+  config:  kobito.storages.singletons.Config;
 
   constructor() {
-    this.config = kaita.storages.singletons.Config.getInstance();
+    this.config = kobito.storages.singletons.Config.getInstance();
   }
 
   resetAll(): void {

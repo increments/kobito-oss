@@ -2,7 +2,7 @@ describe "src/commands/initialize/ensure-initial-databases", ->
   stubDatabases()
 
   it "should ensure #inbox and #trash", ->
-    kaita.commands.initialize.ensureInitialDatabases()
+    kobito.commands.initialize.ensureInitialDatabases()
     .then ->
       Team.all()
     .then (teams) ->

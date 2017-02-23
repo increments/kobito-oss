@@ -13,20 +13,20 @@ export interface State {
   onEdit: boolean;
 
   // cache for performance
-  teams: kaita.entities.Team[];
-  templates: kaita.entities.Template[];
+  teams: kobito.entities.Team[];
+  templates: kobito.entities.Template[];
 }
 
 export interface Template {
   onEdit: boolean;
-  selectedItem: kaita.entities.Item;
-  selectedTeam: kaita.entities.Team;
-  items: kaita.entities.Item[];
+  selectedItem: kobito.entities.Item;
+  selectedTeam: kobito.entities.Team;
+  items: kobito.entities.Item[];
   logined: boolean;
   hasNextAsar: boolean;
   latest_version?: string;
   download_link?: string;
   CHANGELOG?: string;
-  teams: kaita.entities.Team[];
+  teams: kobito.entities.Team[];
   filterQuery: string;
 }

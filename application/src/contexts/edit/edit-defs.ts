@@ -8,7 +8,7 @@ export interface Group {
 }
 
 export interface State {
-  item: kaita.entities.Item;
+  item: kobito.entities.Item;
   showPreview: boolean;
   canUpdate: boolean;
   canUpload: boolean;
@@ -18,7 +18,7 @@ export interface State {
   buffer: {
     title: string;
     body: string;
-    tags: kaita.entities.Tag[];
+    tags: kobito.entities.Tag[];
     selectedGroup?: Group;
   };
 }

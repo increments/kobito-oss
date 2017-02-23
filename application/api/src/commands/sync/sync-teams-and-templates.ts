@@ -1,4 +1,4 @@
-module kaita.commands.sync {
+module kobito.commands.sync {
   function syncTeamTemplates(teamIds: string[]) {
     return teamIds.map(teamId => syncTemplates(teamId));
   }

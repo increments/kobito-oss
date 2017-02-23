@@ -67,5 +67,5 @@
 ///<reference path='commands/sync/sync-teams.ts' />
 ///<reference path='commands/sync/sync-teams-and-templates.ts' />
 
-//export = kaita;*/
-(<any>module).exports = kaita;
+//export = kobito;*/
+(<any>module).exports = kobito;

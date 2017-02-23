@@ -1,8 +1,8 @@
-module kaita.commands {
+module kobito.commands {
   var m = require('moment');
   export function updateItem(item: entities.Item) {
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
 
     app.track('update-item');
 

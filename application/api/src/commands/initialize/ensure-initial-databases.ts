@@ -1,4 +1,4 @@
-module kaita.commands.initialize {
+module kobito.commands.initialize {
   export function ensureInitialDatabases(): Promise<any> {
     return Team.save([
       {

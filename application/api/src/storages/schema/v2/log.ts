@@ -1,3 +1,3 @@
-module kaita.storages.schema.v2 {
+module kobito.storages.schema.v2 {
   export var Log = {};
 }

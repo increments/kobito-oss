@@ -42,7 +42,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     // TODO: refactor aggregate items
     var teamId = app.router.activeContext.state.selectedTeamId;
 
-    kaita.queries.buildTimeline(teamId, query)
+    kobito.queries.buildTimeline(teamId, query)
     .then(items => {
       context.update(s => {
         s.hitItems = items;

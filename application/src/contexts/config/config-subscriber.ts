@@ -50,7 +50,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       (<any>Qiita).setEndpoint('https://qiita.com');
       (<any>Qiita).setToken(tokenAtLeave);
 
-      var setup: any = kaita.commands.initialize.setupAtFirstLogin()
+      var setup: any = kobito.commands.initialize.setupAtFirstLogin()
       .then(() => {
         app.popup.close();
         app.router.popContext();

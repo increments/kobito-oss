@@ -1,4 +1,4 @@
-module kaita.queries {
+module kobito.queries {
   // return not inbox nor qiita
   export function getTeamIds(): Promise<string[]> {
     return Team.all()

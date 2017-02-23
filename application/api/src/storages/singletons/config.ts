@@ -1,4 +1,4 @@
-module kaita.storages.singletons {
+module kobito.storages.singletons {
   var uuid = require('uuid');
   var _instance: Config;
 

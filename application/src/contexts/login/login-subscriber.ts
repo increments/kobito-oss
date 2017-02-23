@@ -22,7 +22,7 @@ function subscriber(context, subscribe) {
       var token = data.token;
       app.config.setAPIToken(token);
       (<any>Qiita).setToken(token);
-      return kaita.commands.initialize.setupAtFirstLogin();
+      return kobito.commands.initialize.setupAtFirstLogin();
     })
     .then(() => {
       app.router.popContext();

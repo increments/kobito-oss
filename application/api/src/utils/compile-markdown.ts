@@ -1,7 +1,7 @@
 declare var React: any;
 var dompurify = require('dompurify')
 
-module kaita.utils {
+module kobito.utils {
   var md2react = require('md2react');
   var emosa = require('emosa');
   var emcode = require('emcode');

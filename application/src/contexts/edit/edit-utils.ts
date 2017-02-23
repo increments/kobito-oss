@@ -4,7 +4,7 @@ import Context = require('./edit-context');
 export interface SaveReport {
   error: boolean;
   message: string;
-  nextItem?: kaita.entities.Item;
+  nextItem?: kobito.entities.Item;
 }
 
 export function parseBufferText(
@@ -16,15 +16,15 @@ export function parseBufferText(
   return {title: title, body: body};
 }
 
-export function parseTagString(tagText: string): kaita.entities.Tag[] {
+export function parseTagString(tagText: string): kobito.entities.Tag[] {
   var raw = tagText.split(/\s+|,/);
-  var tags: kaita.entities.Tag[] = _(raw).uniq().compact().map(tagName => ({name: tagName})).value();
+  var tags: kobito.entities.Tag[] = _(raw).uniq().compact().map(tagName => ({name: tagName})).value();
   return tags;
 }
 
 export function isItemTouched(
-  buffer: {title: string; body: string; tags: kaita.entities.Tag[]; group: any},
-  oldItem: kaita.entities.Item
+  buffer: {title: string; body: string; tags: kobito.entities.Tag[]; group: any},
+  oldItem: kobito.entities.Item
 ) : boolean {
   var updatable = false;
   if (buffer.title !== oldItem.title) {
@@ -55,7 +55,7 @@ export function isItemTouched(
 }
 
 export function isItemUploadable(
-  item: kaita.entities.Item
+  item: kobito.entities.Item
 ) : boolean {
   if (item.teamId === '#inbox') {
     return false;
@@ -71,7 +71,7 @@ export function isItemUploadable(
 }
 
 export function getCurrentDoc(context: Arda.Context<d.Props, d.State, d.Template>):
-{title: string; body: string; tags: kaita.entities.Tag[]; group: any;} {
+{title: string; body: string; tags: kobito.entities.Tag[]; group: any;} {
     return {
       title: context.state.buffer.title,
       body : context.state.buffer.body,
@@ -93,7 +93,7 @@ export function tryToSave(context: Arda.Context<d.Props, d.State, d.Template>): 
           item.tags = doc.tags;
           item.group = doc.group;
 
-          kaita.commands.updateItem(item).then(item => {
+          kobito.commands.updateItem(item).then(item => {
             done({
               error: false,
               message: __('saved: {}', item.title),

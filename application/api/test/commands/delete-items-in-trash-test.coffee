@@ -8,14 +8,14 @@ describe "src/commands/create-new-item", ->
       name: 'Trash'
       local: true
     }).then ->
-      kaita.commands.createNewItem('title', 'body', [name: 'tag1'], 'foo')
+      kobito.commands.createNewItem('title', 'body', [name: 'tag1'], 'foo')
     .then ->
-      kaita.commands.createNewItem('title', 'body', [name: 'tag1'], '#trash')
+      kobito.commands.createNewItem('title', 'body', [name: 'tag1'], '#trash')
     .then ->
-      kaita.commands.createNewItem('title', 'body', [name: 'tag1'], '#trash')
+      kobito.commands.createNewItem('title', 'body', [name: 'tag1'], '#trash')
 
   it "should delete item", ->
-    kaita.commands.deleteItemsInTrash()
+    kobito.commands.deleteItemsInTrash()
     Item.select((item) -> item._id is '#trash')
     .then (items) ->
       assert items.length is 0

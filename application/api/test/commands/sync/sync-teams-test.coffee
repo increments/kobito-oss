@@ -20,7 +20,7 @@ describe "src/commands/sync/sync-teams", ->
       Item.all().then (items) -> Team.all().then (teams) ->
         assert teams.length is 2
         assert items.length is 4
-        kaita.commands.sync.dropTeam('1')
+        kobito.commands.sync.dropTeam('1')
       .then ->
         Item.all().then (items) -> Team.all().then (teams) ->
           assert items.length is 0
@@ -28,7 +28,7 @@ describe "src/commands/sync/sync-teams", ->
 
   context '#dropRemovedTeams', ->
     beforeEach ->
-      @sinon.stub(kaita.qiita, "fetchTeams").returns Promise.resolve([
+      @sinon.stub(kobito.qiita, "fetchTeams").returns Promise.resolve([
         {id: 'foo1'}
       ])
 
@@ -48,7 +48,7 @@ describe "src/commands/sync/sync-teams", ->
       Item.all().then (items) -> Team.all().then (teams) ->
         assert teams.length is 3
         assert items.length is 3
-        kaita.commands.sync.dropRemovedTeams()
+        kobito.commands.sync.dropRemovedTeams()
       .then ->
         Item.all().then (items) -> Team.all().then (teams) ->
           assert items.length is 1

@@ -1,4 +1,4 @@
-module kaita.commands.sync {
+module kobito.commands.sync {
   declare var Promise: any;
   export function syncAllTeamTemplates() {
     return queries.getTeamIds()
@@ -8,7 +8,7 @@ module kaita.commands.sync {
   export function syncTemplates(teamId: string): Promise<any> {
     return qiita.fetchTemplates(teamId)
     .then(items => {
-      var itemsToSave: kaita.entities.Template[] = items.map((i, index) => {
+      var itemsToSave: kobito.entities.Template[] = items.map((i, index) => {
         return {
           _id: teamId + ':' + i.id.toString(),
           staticId: i.id.toString(),

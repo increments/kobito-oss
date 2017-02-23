@@ -1,4 +1,4 @@
-module kaita.commands {
+module kobito.commands {
   export function deleteItemsInTrash() {
     return Item.select(item => item.teamId === '#trash')
     .then(itemsInTrash => {

@@ -89,7 +89,7 @@ module.exports =
     ]
 
   onClickUpdateTeamAndTemplates: ->
-    config = kaita.storages.singletons.Config.getInstance()
+    config = kobito.storages.singletons.Config.getInstance()
 
     if config.getAPIToken()
       app.popup.showWithChoices __('Fetch current teams and templates'), [
@@ -98,7 +98,7 @@ module.exports =
           type: 'positive'
           onSelect: =>
             app.popup.showLoader 'Now Loading...'
-            kaita.commands.sync.syncTeamsAndTemplates()
+            kobito.commands.sync.syncTeamsAndTemplates()
             .then ->
               app.popup.close()
               Logger.log __ 'Updated teams and its templates'

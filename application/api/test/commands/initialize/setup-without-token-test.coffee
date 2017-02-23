@@ -2,16 +2,16 @@ describe 'domains/commands', ->
   context 'setupWithoutToken', ->
     stubDatabases()
     beforeEach ->
-      @sinon.stub(kaita.commands, 'ensureUserId')
+      @sinon.stub(kobito.commands, 'ensureUserId')
         .returns Promise.resolve()
-      @sinon.stub(kaita.commands.sync, 'syncTeamsAndTemplates')
+      @sinon.stub(kobito.commands.sync, 'syncTeamsAndTemplates')
         .returns Promise.resolve()
 
     it 'ensure id', ->
-      kaita.commands.initialize.setupWithoutToken()
+      kobito.commands.initialize.setupWithoutToken()
       .then ->
-        assert !kaita.commands.ensureUserId.called
-        assert !kaita.commands.sync.syncTeamsAndTemplates.called
+        assert !kobito.commands.ensureUserId.called
+        assert !kobito.commands.sync.syncTeamsAndTemplates.called
         Team.all()
       .then (teams) ->
         assert teams.length is 2

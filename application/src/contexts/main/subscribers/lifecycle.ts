@@ -19,7 +19,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     var targetTeamId = context.state.selectedTeamId;
 
     // fetch items
-    kaita.queries.isLocalTeam(targetTeamId)
+    kobito.queries.isLocalTeam(targetTeamId)
     .then(isLocalTeam => {
       if (!isLocalTeam && navigator.onLine) {
         ui.syncItemsIfNotExistWithCover(targetTeamId, context);
@@ -28,7 +28,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
 
     // fetch usernames for completion
     if (navigator.onLine) {
-      kaita.qiita.fetchUsernames(targetTeamId).then(usernames => {
+      kobito.qiita.fetchUsernames(targetTeamId).then(usernames => {
         Username.save({_id: targetTeamId, usernames});
         console.log('fetched usernames in team ' + targetTeamId);
       }).catch((e) => {

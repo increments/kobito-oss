@@ -1,7 +1,7 @@
-module kaita.qiita {
+module kobito.qiita {
   export function fetchTemplates(teamId: string) {
   // : Promise<Qiita.Entities.Template[]>
-    return kaita.queries.isLocalTeam(teamId)
+    return kobito.queries.isLocalTeam(teamId)
     .then(isLocalTeam => {
       if (isLocalTeam) {
         return Promise.reject(new Error('Inbox cant sync'));

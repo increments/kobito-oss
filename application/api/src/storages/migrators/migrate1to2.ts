@@ -4,7 +4,7 @@
 // 3. Add #trash team as local
 
 // () => Promise<any>
-module kaita.storages.migrators {
+module kobito.storages.migrators {
   export function migrate1to2() {
     return Promise.resolve()
   }

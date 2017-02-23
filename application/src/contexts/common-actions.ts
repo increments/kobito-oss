@@ -68,22 +68,22 @@ export function tryToUpload(itemId: string, options: {coediting?: boolean;}) {
       if (item.syncedItemId) {
         app.popup.showLoader('Now Uploading...');
 
-        kaita.qiita.fetchItem(
+        kobito.qiita.fetchItem(
           teamId,
           item.syncedItemId
         )
         .then((qItem: Qiita.Entities.Item) => {
-          return kaita.commands.sync.syncItem(qItem, teamId);
+          return kobito.commands.sync.syncItem(qItem, teamId);
         })
         .then(result => {
           if (
-            result.result === kaita.commands.sync.SyncItemResultStatus.UPDATE ||
-            result.result === kaita.commands.sync.SyncItemResultStatus.CONFLICT
+            result.result === kobito.commands.sync.SyncItemResultStatus.UPDATE ||
+            result.result === kobito.commands.sync.SyncItemResultStatus.CONFLICT
           ) {
             return (<any>reject)(new Error('conflict detected'));
           }
 
-          return kaita.qiita.updateItem(
+          return kobito.qiita.updateItem(
             item._id,
             teamId
           );
@@ -102,7 +102,7 @@ export function tryToUpload(itemId: string, options: {coediting?: boolean;}) {
       } else {
         // upload
         app.popup.showLoader('Now Loading...');
-        kaita.qiita.createItem(itemId, teamId, {
+        kobito.qiita.createItem(itemId, teamId, {
           coediting: options.coediting
         })
         .then(() => {

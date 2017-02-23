@@ -17,7 +17,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   subscribe('main:select-next-item', () => {
     (<any>context).getActiveComponent().registerAutoFocus();
 
-    var nextItem = kaita.queries.getNeiborItemOnTimeline(
+    var nextItem = kobito.queries.getNeiborItemOnTimeline(
       context.state.selectedTeamId,
       context.state.filterQuery,
       context.state.selectedItemId,
@@ -37,7 +37,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     (<any>context).getActiveComponent().registerAutoFocus();
     var teamId = context.state.selectedTeamId;
     var query = context.state.filterQuery;
-    kaita.queries.buildTimeline(teamId, query)
+    kobito.queries.buildTimeline(teamId, query)
     .then(items => {
       if (items.length > 1) {
         context.update(state => {
@@ -52,7 +52,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     (<any>context).getActiveComponent().registerAutoFocus();
     var teamId = context.state.selectedTeamId;
     var query = context.state.filterQuery;
-    kaita.queries.buildTimeline(teamId, query)
+    kobito.queries.buildTimeline(teamId, query)
     .then(items => {
       if (items.length > 1) {
         context.update(state => {
@@ -66,7 +66,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   subscribe('main:select-previous-item', () => {
     (<any>context).getActiveComponent().registerAutoFocus();
 
-    var nextItem = kaita.queries.getNeiborItemOnTimeline(
+    var nextItem = kobito.queries.getNeiborItemOnTimeline(
       context.state.selectedTeamId,
       context.state.filterQuery,
       context.state.selectedItemId,
@@ -99,7 +99,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
         s.selectedItemId = null;
         return s;
       });
-      var config = kaita.storages.singletons.Config.getInstance();
+      var config = kobito.storages.singletons.Config.getInstance();
       config.setLastTeamId(nextTeamId);
     });
   });
@@ -133,20 +133,20 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
         s.selectedItemId = null;
         return s;
       });
-      var config = kaita.storages.singletons.Config.getInstance();
+      var config = kobito.storages.singletons.Config.getInstance();
       config.setLastTeamId(nextTeamId);
     });
   });
 
   subscribe('main:changeTeam', (teamId: string) => {
     app.track('change-team');
-    var config = kaita.storages.singletons.Config.getInstance();
+    var config = kobito.storages.singletons.Config.getInstance();
 
     // save last showed team to restore last state at boot
     config.setLastTeamId(teamId);
 
     // fetch usernames for completion
-    kaita.qiita.fetchUsernames(teamId).then(usernames => {
+    kobito.qiita.fetchUsernames(teamId).then(usernames => {
       Username.save({_id: teamId, usernames});
       console.log('fetched usernames in team ' + teamId);
     }).catch((e) => {

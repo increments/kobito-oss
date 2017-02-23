@@ -19,7 +19,7 @@ login = (code) ->
     Qiita.setToken token
     app.popup.showLoader(__ 'Initializing...')
     app.track('first-login')
-    kaita.commands.initialize.setupAtFirstLogin()
+    kobito.commands.initialize.setupAtFirstLogin()
 
 postLogin = ->
   app.popup.close()

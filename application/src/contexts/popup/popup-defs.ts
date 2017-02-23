@@ -11,7 +11,7 @@ export interface State {
   focusIndex?: number;
   message?: string;
   choices?: Choice[];
-  hitItems?: kaita.entities.Item[];
+  hitItems?: kobito.entities.Item[];
   onClickYesToPost?: Function;
   onClickNext?: Function;
   onSelectReload?: Function;

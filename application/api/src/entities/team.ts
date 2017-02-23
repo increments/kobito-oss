@@ -1,4 +1,4 @@
-module kaita.entities {
+module kobito.entities {
   export interface Team {
     _id?: string;
     name: string;

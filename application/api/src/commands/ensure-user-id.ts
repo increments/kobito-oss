@@ -1,6 +1,6 @@
-module kaita.commands {
+module kobito.commands {
   export function ensureUserId(): Promise<any> {
-    var config = kaita.storages.singletons.Config.getInstance();
+    var config = kobito.storages.singletons.Config.getInstance();
     if (!config.getAPIToken()) {
       return Promise.reject('you are not logined');
     }

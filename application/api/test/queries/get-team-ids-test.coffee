@@ -10,6 +10,6 @@ describe "src/queries/get-team-ids", ->
     ]
 
   it "should collect registered qiita team", ->
-    kaita.queries.getTeamIds()
+    kobito.queries.getTeamIds()
     .then (ids) =>
       assert.deepEqual ids, ['foo1', 'foo3']

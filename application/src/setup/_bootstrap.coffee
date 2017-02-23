@@ -22,14 +22,14 @@ module.exports = ->
     document.head.querySelector('link').href = "css/#{theme}-theme.css"
 
   # Initialize databases
-  .then -> kaita.commands.initialize.initStorages(pkg.dbVersion)
+  .then -> kobito.commands.initialize.initStorages(pkg.dbVersion)
 
   # Enter with login or not
   .then ->
     if token = app.config.getAPIToken()
-      kaita.commands.initialize.setupWithToken(token)
+      kobito.commands.initialize.setupWithToken(token)
     else
-      kaita.commands.initialize.setupWithoutToken()
+      kobito.commands.initialize.setupWithoutToken()
 
   # Apply keybinds
   .then -> do require './keybinds'

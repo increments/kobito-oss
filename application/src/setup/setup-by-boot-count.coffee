@@ -7,7 +7,7 @@ module.exports = ->
     firstItems = require '../fixtures/first-items'
     Item.save(
       firstItems.map (item) ->
-        item.compiled_body = kaita.utils.compileMarkdown(item.body)
+        item.compiled_body = kobito.utils.compileMarkdown(item.body)
         item
     ).then ->
       app.popup.showWelcomeMessage ->

@@ -18,7 +18,7 @@ module.exports = React.createClass
       if @props.autocomplete
         (cm, word) =>
           word = word.toLowerCase()
-          tags = kaita.queries.getTags()
+          tags = kobito.queries.getTags()
           tags
           .sort()
           .filter (w) ->

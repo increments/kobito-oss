@@ -1,4 +1,4 @@
-module kaita.storages {
+module kobito.storages {
   // var StoneSkin = require('stone-skin/with-tv4');
 
   export class Log extends StoneSkin.MemoryDb<any> {

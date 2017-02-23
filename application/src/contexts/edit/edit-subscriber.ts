@@ -22,10 +22,10 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       return;
     };
 
-    kaita.queries.isLocalTeam(teamId)
+    kobito.queries.isLocalTeam(teamId)
     .then(isLocalTeam => {
       if (!isLocalTeam && teamId !== "qiita") {
-        kaita.qiita.fetchGroups(teamId).then(groups => {
+        kobito.qiita.fetchGroups(teamId).then(groups => {
           GroupCacheByTeam[teamId] = groups;
           context.update(s => {
             s.groups = groups;
@@ -133,7 +133,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   });
 
   subscribe('edit:updateTags', (tagText: string) => {
-    var tags: kaita.entities.Tag[] = utils.parseTagString(tagText);
+    var tags: kobito.entities.Tag[] = utils.parseTagString(tagText);
     context.update(state => {
       state.buffer.tags = tags;
       state.canUpdate = utils.isItemTouched((<any>state.buffer), context.state.item);
@@ -205,7 +205,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   subscribe('edit:select-template', (templateId: string) => {
     var insert = () => {
       var teamId = context.state.item.teamId;
-      kaita.qiita.fetchExpandedTemplate(teamId, templateId).then(item => {
+      kobito.qiita.fetchExpandedTemplate(teamId, templateId).then(item => {
         context.state.buffer.tags = item.expanded_tags;
         var body = item.expanded_title + '\n' + item.expanded_body;
         context.getActiveComponent().refs.editor.codemirror.replaceSelection(body);
@@ -253,7 +253,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       var comp: any = app.router.activeContext.getActiveComponent();
       comp.refs.editor.codemirror.refresh();
     });
-    var config = kaita.storages.singletons.Config.getInstance();
+    var config = kobito.storages.singletons.Config.getInstance();
     config.setLastShowPreview(context.state.showPreview);
   });
 });

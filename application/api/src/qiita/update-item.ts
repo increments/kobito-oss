@@ -1,4 +1,4 @@
-module kaita.qiita {
+module kobito.qiita {
   var m: any = require('moment');
 
   export function updateItem(itemId: string, teamId: string) {
@@ -28,7 +28,7 @@ module kaita.qiita {
         item.local_updated_at = now;
         item.synced_at = now;
         item.remote_updated_at = m(result.updated_at).unix();
-        return (<any>kaita).commands.updateItem(item);
+        return (<any>kobito).commands.updateItem(item);
       });
     });
   };

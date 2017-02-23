@@ -14,7 +14,7 @@ describe "src/commands/transfer-item", ->
     it "should transfer item to other team", ->
       Item.find('i1')
       .then (item) ->
-        kaita.commands.transferItem(item._id, '2')
+        kobito.commands.transferItem(item._id, '2')
       .then -> Item.find('i1')
       .then (item) ->
         assert item.teamId, '2'
@@ -40,7 +40,7 @@ describe "src/commands/transfer-item", ->
           }
 
       it "should sanitize remote annotations", ->
-        kaita.commands.transferItems('1', '2')
+        kobito.commands.transferItems('1', '2')
         .then -> Item.find('i1')
         .then (item) ->
           assert item.local_updated_at isnt null
@@ -66,7 +66,7 @@ describe "src/commands/transfer-item", ->
         Item.select((i) => i.teamId is '2')
         .then (items) ->
           assert items.length is 1
-          kaita.commands.transferItems('1', '2')
+          kobito.commands.transferItems('1', '2')
         .then -> Item.select((i) => i.teamId is '2')
         .then (items) ->
           assert items.length is 4

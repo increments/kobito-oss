@@ -99,7 +99,7 @@ module.exports = React.createClass
 
     # Set usernames to cm for completion
     teamId = @props.teamId
-    kaita.queries.isLocalTeam(teamId)
+    kobito.queries.isLocalTeam(teamId)
     .then (isLocal) ->
       unless isLocal
         Username.find(teamId)
@@ -145,7 +145,7 @@ module.exports = React.createClass
     name = file.name ? 'image'
     teamId = @props.teamId
 
-    kaita.queries.isLocalTeam(teamId)
+    kobito.queries.isLocalTeam(teamId)
     .then (isLocal) ->
       if isLocal
         cm.replaceSelection "![#{name}](#{file.path})"

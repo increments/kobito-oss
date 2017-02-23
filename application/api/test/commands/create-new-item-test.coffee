@@ -10,7 +10,7 @@ describe "src/commands/create-new-item", ->
     }
 
   it "should create new item", ->
-    kaita.commands.createNewItem('title', 'body', [name: 'tag1'], 't1')
+    kobito.commands.createNewItem('title', 'body', [name: 'tag1'], 't1')
     .then (item) ->
       assert item.title is 'title'
       assert item.body is 'body'

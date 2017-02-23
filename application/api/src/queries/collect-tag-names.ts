@@ -1,4 +1,4 @@
-module kaita.queries {
+module kobito.queries {
   export function collectTagNames(
     teamId: string
   ): Promise<string[]> {

@@ -9,7 +9,7 @@ class Edit extends Arda.Context<d.Props, d.State, d.Template> {
   get subscribers() {return [subscriber, zoomSubscriber];}
 
   public initState(props: d.Props) {
-    var config = kaita.storages.singletons.Config.getInstance();
+    var config = kobito.storages.singletons.Config.getInstance();
     var showPreview = config.getLastShowPreview();
     if (showPreview == null) {
       showPreview = true;
@@ -20,7 +20,7 @@ class Edit extends Arda.Context<d.Props, d.State, d.Template> {
       .then(item => {
         Team.find(item.teamId)
         .then(team => {
-          kaita.queries.buildTags(item.teamId)
+          kobito.queries.buildTags(item.teamId)
           .then(tags => {
             done({
               item: item,
@@ -48,7 +48,7 @@ class Edit extends Arda.Context<d.Props, d.State, d.Template> {
       Template.select(t => t.teamId === state.item.teamId)
       .then(templates => {
         var ret: d.Template = _.cloneDeep(state);
-        var tagCanditates = kaita.queries.getTags();
+        var tagCanditates = kobito.queries.getTags();
 
         ret.templates = templates.map(t => ({
           text: t.name,

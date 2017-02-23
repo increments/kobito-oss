@@ -6,7 +6,7 @@
         "noImplicitAny": false,
         "removeComments": true,
         "preserveConstEnums": true,
-        "outFile": "./dist/kaita.js",
+        "outFile": "./dist/kobito.js",
         "sourceMap": true
     },
     "include": [

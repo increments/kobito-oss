@@ -1,4 +1,4 @@
-module kaita.queries {
+module kobito.queries {
   var _lastTags: string[] = [];
 
   export function getTags(): string[] {

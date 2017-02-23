@@ -1,4 +1,4 @@
-module kaita.entities {
+module kobito.entities {
   export interface Template {
     _id?: string;
     staticId: string;

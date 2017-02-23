@@ -5,7 +5,7 @@ interface Global {
   Username: any,
   Log: any
 }
-module kaita.commands.initialize {
+module kobito.commands.initialize {
   var StoneSkin = require('stone-skin/with-tv4');
   const g: any = global
   export function initStorages(dbVersion) {

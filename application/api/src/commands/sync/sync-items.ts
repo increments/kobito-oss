@@ -1,4 +1,4 @@
-module kaita.commands.sync {
+module kobito.commands.sync {
   var m: any = require('moment');
 
   import QiitaItem = Qiita.Entities.Item;
@@ -19,9 +19,9 @@ module kaita.commands.sync {
     qItem: QiitaItem,
     teamId: string,
     timestamp
-  ): Promise<kaita.entities.Item> {
+  ): Promise<kobito.entities.Item> {
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
     var savedItem: entities.Item = {
       title: qItem.title,
       body: qItem.body,
@@ -40,10 +40,10 @@ module kaita.commands.sync {
   }
 
   function updateItemByQiitaItem(
-    item: kaita.entities.Item,
+    item: kobito.entities.Item,
     qItem: QiitaItem,
     timestamp
-  ): Promise<kaita.entities.Item> {
+  ): Promise<kobito.entities.Item> {
     // update props
     item.title = qItem.title;
     item.body = qItem.body;
@@ -61,7 +61,7 @@ module kaita.commands.sync {
 
   export function resolveConflictAsQiita(itemId: string) {
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
 
     app.track('resolve-conflict-as-qiita');
 
@@ -71,8 +71,8 @@ module kaita.commands.sync {
 
   export function resolveConflictAsKaita(itemId: string) {
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
-    app.track('resolve-conflict-as-kaita');
+    kobito.queries.removeLastTimelineCache();
+    app.track('resolve-conflict-as-kobito');
 
     return Item.find(itemId)
     .then(item => {
@@ -81,14 +81,14 @@ module kaita.commands.sync {
       return updateItem(item);
     })
     .then(item => {
-      return kaita.qiita.updateItem(item._id, item.teamId);
+      return kobito.qiita.updateItem(item._id, item.teamId);
     });
   }
 
   export function syncItem(qItem: QiitaItem, teamId: string) {
   // : Promise<SyncItemResult> {*/
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
     var remote_updated_at = m(qItem.updated_at).unix();
     return Item.first(i => i.syncedItemId === qItem.id)
     .then(item => {
@@ -160,11 +160,11 @@ module kaita.commands.sync {
     _syncLock = true;
 
     // Remove cache before add
-    kaita.queries.removeLastTimelineCache();
+    kobito.queries.removeLastTimelineCache();
 
     app.track('sync-items');
     return ensureUserId()
-      .then(id => kaita.qiita.fetchLoginUserItems(teamId))
+      .then(id => kobito.qiita.fetchLoginUserItems(teamId))
       .then((qItems: any) => Promise.all(qItems.map(qItem => syncItem(qItem, teamId))))
       .then(results => {
         _syncLock = false;

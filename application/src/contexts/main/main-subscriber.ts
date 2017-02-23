@@ -37,9 +37,9 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       Promise.all(filepaths.map(filepath => {
         var title = path.basename(filepath);
         var body = fs.readFileSync(filepath).toString();
-        return kaita.commands.createNewItem(title, body, [], context.state.selectedTeamId);
+        return kobito.commands.createNewItem(title, body, [], context.state.selectedTeamId);
       }))
-      // .then((items: kaita.entities.Item[]) => {
+      // .then((items: kobito.entities.Item[]) => {
       .then((items: any) => {
         context.update(s => {
           s.selectedItemId = items[0]._id;
@@ -71,7 +71,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       return;
     }
 
-    kaita.commands.createNewItem('', '', [], context.state.selectedTeamId)
+    kobito.commands.createNewItem('', '', [], context.state.selectedTeamId)
     .then(item => {
       context.state.selectedItemId = item._id;
       app.router.pushContext(EditContext, {itemId: item._id});
@@ -102,7 +102,7 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
       {
         text: __('Yes'),
         onSelect: () => {
-          kaita.commands.makeCoedit(itemId)
+          kobito.commands.makeCoedit(itemId)
           .then(() => {
             Logger.log('Make it coedit:done');
             app.popup.close();
@@ -131,9 +131,9 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     app.popup.showLoader(__('Expanding...'));
 
     var teamId = context.state.selectedTeamId;
-    kaita.qiita.fetchExpandedTemplate(teamId, templateId)
+    kobito.qiita.fetchExpandedTemplate(teamId, templateId)
     .then(item => {
-      kaita.commands.createNewItem(
+      kobito.commands.createNewItem(
         item.expanded_title,
         item.expanded_body,
         item.expanded_tags,
@@ -174,14 +174,14 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
     }
 
     var targetTeamId = context.state.selectedTeamId;
-    kaita.queries.isLocalTeam(targetTeamId)
+    kobito.queries.isLocalTeam(targetTeamId)
     .then(isLocalTeam => {
       if (!isLocalTeam) {
-        var config = kaita.storages.singletons.Config.getInstance();
+        var config = kobito.storages.singletons.Config.getInstance();
         var loginId = config.getLoginId();
 
         app.popup.showLoader("Now Syncing...");
-        kaita.commands.sync.syncItems(targetTeamId)
+        kobito.commands.sync.syncItems(targetTeamId)
         .then(() => {
           app.popup.close();
           context.update();
@@ -214,14 +214,14 @@ var subscriber = Arda.subscriber<d.Props, d.State>((context, subscribe) => {
   });
 
   subscribe('toolbar:resolve-conflict-as-kobito', () => {
-    kaita.commands.sync.resolveConflictAsKaita(context.state.selectedItemId)
+    kobito.commands.sync.resolveConflictAsKaita(context.state.selectedItemId)
     .then(() => {
       context.update();
     });
   });
 
   subscribe('toolbar:resolve-conflict-as-qiita', () => {
-    kaita.commands.sync.resolveConflictAsQiita(context.state.selectedItemId)
+    kobito.commands.sync.resolveConflictAsQiita(context.state.selectedItemId)
     .then(() => {
       context.update();
     });

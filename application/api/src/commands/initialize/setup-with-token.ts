@@ -1,6 +1,6 @@
-module kaita.commands.initialize {
+module kobito.commands.initialize {
   export function setupWithToken(token: string): Promise<any> {
-    var config = kaita.storages.singletons.Config.getInstance();
+    var config = kobito.storages.singletons.Config.getInstance();
     if (token == null) {
       return Promise.reject('you got a invalid token');
     }

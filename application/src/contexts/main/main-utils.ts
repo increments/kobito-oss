@@ -4,9 +4,9 @@ import d = require('./main-defs');
 var pkg = require('../../../package.json');
 const g: any = global;
 
-import SyncItemResultStatus = kaita.commands.sync.SyncItemResultStatus;
+import SyncItemResultStatus = kobito.commands.sync.SyncItemResultStatus;
 export function syncItemsIfNotExistWithCover(targetTeamId: string, context) {
-  return kaita.queries.isLocalTeam(targetTeamId)
+  return kobito.queries.isLocalTeam(targetTeamId)
   .then(isLocalTeam => {
     // skip if local team
     if (isLocalTeam) {
@@ -19,7 +19,7 @@ export function syncItemsIfNotExistWithCover(targetTeamId: string, context) {
         return;
       }
       Logger.log('Start fetching:' + targetTeamId);
-      return kaita.commands.sync.syncItems(targetTeamId)
+      return kobito.commands.sync.syncItems(targetTeamId)
       .then(results => {
         var counters = _.countBy(results, item => item.result);
         // TODO: count
@@ -63,15 +63,15 @@ export function getSelectedItem(teamId, itemId, amount = 0) {
 }
 
 export function findOrCreateItem(teamId: string, itemId?: string)
-: Promise<kaita.entities.Item> {
+: Promise<kobito.entities.Item> {
   if (!teamId) {
     throw new Error('need teamId if create new item');
   }
 
-  return new Promise<kaita.entities.Item>(done => {
+  return new Promise<kobito.entities.Item>(done => {
     if (itemId == null) {
       // create
-      kaita.commands.createNewItem('', '', [], teamId)
+      kobito.commands.createNewItem('', '', [], teamId)
       .then(item => done(item));
     } else {
       // find
@@ -87,8 +87,8 @@ export function findOrCreateItem(teamId: string, itemId?: string)
 
 export function tryToUpdateTeamsAndTemplates(context) {
   if (app.config.getAPIToken()) {
-    kaita.commands.sync.syncTeams()
-    .then(() => kaita.queries.detectRemovedTeamIds())
+    kobito.commands.sync.syncTeams()
+    .then(() => kobito.queries.detectRemovedTeamIds())
     .then(removedTeamIds => {
       return new Promise(done => {
         if (removedTeamIds.length === 0) {
@@ -99,7 +99,7 @@ export function tryToUpdateTeamsAndTemplates(context) {
             {
               text: __('記事をすべて削除'),
               onSelect: () => {
-                kaita.commands.sync.dropRemovedTeams()
+                kobito.commands.sync.dropRemovedTeams()
                 .then(() => done(true));
               }
             },
@@ -108,7 +108,7 @@ export function tryToUpdateTeamsAndTemplates(context) {
               onSelect: () => {
                 (<any>Promise).all(
                   removedTeamIds.map(id => {
-                    return kaita.commands.transferItems(id, '#inbox');
+                    return kobito.commands.transferItems(id, '#inbox');
                   })
                 )
                 .then(() => done(true));
@@ -121,7 +121,7 @@ export function tryToUpdateTeamsAndTemplates(context) {
     .then(teamChanged => {
       if (teamChanged) {
         app.popup.close();
-        return kaita.commands.sync.syncAllTeamTemplates()
+        return kobito.commands.sync.syncAllTeamTemplates()
         .then(() => {
           app.config.setLastTeamId('#inbox');
           context.state.selectedTeamId = '#inbox';
@@ -149,7 +149,7 @@ export function askSendToTrash(context, itemId: string) {
       {
         text: __('Yes'),
         onSelect: () => {
-          kaita.commands.sendToTrash(itemId)
+          kobito.commands.sendToTrash(itemId)
           .then(() => {
             context.update(s => {
               s.selectedItemId = null;
@@ -188,7 +188,7 @@ export function askDelete(context, itemId: string) {
       {
         text: __('Yes'),
         onSelect: () => {
-          kaita.commands.deleteItem(itemId)
+          kobito.commands.deleteItem(itemId)
           .then(() => {
             context.update(s => {
               s.selectedItemId = null;
@@ -216,7 +216,7 @@ export function askDeleteAll(context) {
       text: __('Yes'),
       type: 'danger',
       onSelect: () => {
-        kaita.commands.deleteItemsInTrash()
+        kobito.commands.deleteItemsInTrash()
         .then(() => {
           context.update(s => {
             s.selectedItemId = null;

@@ -30,9 +30,9 @@ describe 'domains/commands', ->
         tags: []
         updated_at: basetime
 
-      kaita.commands.sync.syncItem(qItem, 'foo')
+      kobito.commands.sync.syncItem(qItem, 'foo')
       .then ({result}) ->
-        assert result is kaita.commands.sync.SyncItemResultStatus.NEW
+        assert result is kobito.commands.sync.SyncItemResultStatus.NEW
 
     it 'pass if remote_updated_at is not changed', ->
       qItem = FactoryDog.build 'qiita-item',
@@ -41,9 +41,9 @@ describe 'domains/commands', ->
         title: 'qiita1 updated'
         updated_at: basetime
 
-      kaita.commands.sync.syncItem(qItem, 'foo')
+      kobito.commands.sync.syncItem(qItem, 'foo')
       .then ({result, itemId}) ->
-        assert result is kaita.commands.sync.SyncItemResultStatus.PASS
+        assert result is kobito.commands.sync.SyncItemResultStatus.PASS
 
     it 'update with future updated_at', ->
       qItem =
@@ -53,9 +53,9 @@ describe 'domains/commands', ->
         title: 'qiita1 updated'
         updated_at: future1
 
-      kaita.commands.sync.syncItem(qItem, 'foo')
+      kobito.commands.sync.syncItem(qItem, 'foo')
       .then ({result, itemId}) ->
-        assert result is kaita.commands.sync.SyncItemResultStatus.UPDATE
+        assert result is kobito.commands.sync.SyncItemResultStatus.UPDATE
         Item.find(itemId)
       .then (item) ->
         assert item.title is 'qiita1 updated'
@@ -64,15 +64,15 @@ describe 'domains/commands', ->
       Item.first(-> true)
       .then (item) ->
         item.title = 'local'
-        kaita.commands.updateItem(item)
+        kobito.commands.updateItem(item)
       .then ->
         qItem = FactoryDog.build 'qiita-item',
           id: 'qiita1'
           updated_at: basetime
           title: 'remote'
-        kaita.commands.sync.syncItem(qItem, 'foo')
+        kobito.commands.sync.syncItem(qItem, 'foo')
       .then ({result, itemId}) ->
-        assert result is kaita.commands.sync.SyncItemResultStatus.PASS
+        assert result is kobito.commands.sync.SyncItemResultStatus.PASS
         Item.find itemId
       .then (item) ->
         assert item.title is 'local'
@@ -81,16 +81,16 @@ describe 'domains/commands', ->
       Item.first(-> true)
       .then (item) ->
         item.title = 'touched'
-        kaita.commands.updateItem(item)
+        kobito.commands.updateItem(item)
       .then ->
         qItem = FactoryDog.build 'qiita-item',
           id: 'qiita1'
           tag: []
           title: 'qiita1 updated'
           updated_at: future1
-        kaita.commands.sync.syncItem(qItem, 'foo')
+        kobito.commands.sync.syncItem(qItem, 'foo')
       .then ({result, itemId}) ->
-        assert result is kaita.commands.sync.SyncItemResultStatus.CONFLICT
+        assert result is kobito.commands.sync.SyncItemResultStatus.CONFLICT
         Item.find itemId
       .then (item) ->
         assert !!item.conflict_item
@@ -98,7 +98,7 @@ describe 'domains/commands', ->
   context '#syncItems', ->
     context 'without token', ->
       it 'throw', (done) ->
-        kaita.commands.sync.syncItems()
+        kobito.commands.sync.syncItems()
         .catch -> done()
 
     context 'with databases', ->
@@ -108,7 +108,7 @@ describe 'domains/commands', ->
           localStorage.setItem 'api-token', '--token--'
           localStorage.setItem 'login-id', '--xxx--'
 
-          @sinon.stub(kaita.qiita, 'fetchLoginUserItems')
+          @sinon.stub(kobito.qiita, 'fetchLoginUserItems')
             .returns [
               FactoryDog.build 'qiita-item', tags: []
               FactoryDog.build 'qiita-item', tags: []
@@ -116,14 +116,14 @@ describe 'domains/commands', ->
             ]
 
         # it 'save results', ->
-          # kaita.commands.sync.syncItems('#foo')
+          # kobito.commands.sync.syncItems('#foo')
           # .then -> Item.select (i) -> i.teamId is '#foo'
           # .then (items) ->
             # assert items.length is 3
 
         # it 'override same id item', ->
-          # kaita.commands.sync.syncItems('#foo')
-          # .then -> kaita.commands.sync.syncItems('#foo')
+          # kobito.commands.sync.syncItems('#foo')
+          # .then -> kobito.commands.sync.syncItems('#foo')
           # .then -> Item.select (i) -> i.teamId is '#foo'
           # .then (items) ->
             # assert items.length is 3

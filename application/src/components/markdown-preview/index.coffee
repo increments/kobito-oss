@@ -4,7 +4,7 @@ module.exports = React.createClass
     md = @props.body ? ''
     md = md.replace(/\t/g, '    ')
     @_last_el ?= React.createElement('div')
-    el = kaita.utils.compileMarkdownForPreview md
+    el = kobito.utils.compileMarkdownForPreview md
     @_last_el = el
     React.createElement 'div', className: 'markdown-content', [el]
 

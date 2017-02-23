@@ -3,7 +3,7 @@ keymap = require '../fixtures/default-keymap'
 module.exports = ->
   # TODO: override keymap by user setting
   # fs = require 'fs'
-  # userSettingPath = process.env.HOME + '/.config/kaita/keymap.json'
+  # userSettingPath = process.env.HOME + '/.config/kobito/keymap.json'
   # userKeymap =
   #   if fs.existsSync userSettingPath
   #     require userSettingPath

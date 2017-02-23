@@ -1,6 +1,6 @@
 describe "src/commands/initialize/init-storages", ->
   before ->
-    kaita.commands.initialize.initStorages('1')
+    kobito.commands.initialize.initStorages('1')
 
   afterEach ->
     Item.clear()
@@ -13,7 +13,7 @@ describe "src/commands/initialize/init-storages", ->
     delete global.Log
 
   it "should export storages to global", ->
-    assert Item instanceof kaita.storages.Item
-    assert Team instanceof kaita.storages.Team
-    assert Template instanceof kaita.storages.Template
-    assert Log instanceof kaita.storages.Log
+    assert Item instanceof kobito.storages.Item
+    assert Team instanceof kobito.storages.Team
+    assert Template instanceof kobito.storages.Template
+    assert Log instanceof kobito.storages.Log

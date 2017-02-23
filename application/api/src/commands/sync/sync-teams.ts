@@ -1,4 +1,4 @@
-module kaita.commands.sync {
+module kobito.commands.sync {
   export function syncTeams(): Promise<any> {
     return qiita.fetchTeams()
     .then(teams => {

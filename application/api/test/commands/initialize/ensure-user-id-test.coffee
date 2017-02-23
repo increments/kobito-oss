@@ -6,7 +6,7 @@ describe 'domains/commands', ->
       afterEach ->
         localStorage.clear()
       it 'throw', (done) ->
-        kaita.commands.ensureUserId()
+        kobito.commands.ensureUserId()
         .then -> done 1
         .catch -> done()
 
@@ -23,7 +23,7 @@ describe 'domains/commands', ->
               .returns Promise.resolve id: 'aaaa'
 
           xit 'fetch data.id', ->
-            kaita.commands.ensureUserId()
+            kobito.commands.ensureUserId()
             .then ->
               assert localStorage.getItem('login-id'), 'aaaa'
 
@@ -34,7 +34,7 @@ describe 'domains/commands', ->
               .returns Promise.resolve {}
 
           xit 'throw', (done) ->
-            kaita.commands.ensureUserId()
+            kobito.commands.ensureUserId()
             .catch (e) ->
               assert e.indexOf 'login'
               done()
@@ -44,6 +44,6 @@ describe 'domains/commands', ->
           localStorage.setItem('login-id', 'yyy')
 
         it 'pass through without fetching id', ->
-          kaita.commands.ensureUserId()
+          kobito.commands.ensureUserId()
           .then ->
             assert localStorage.getItem('login-id'), 'yyy'

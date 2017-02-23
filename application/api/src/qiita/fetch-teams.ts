@@ -1,4 +1,4 @@
-module kaita.qiita {
+module kobito.qiita {
   export function fetchTeams() {
   // : Promise<{name: string; id: string;}[]> {*/
     qiita.setEndpoint('qiita');

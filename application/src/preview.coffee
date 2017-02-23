@@ -2,7 +2,7 @@ window.addEventListener 'load', ->
   require './env/electron'
   require './setup/globals'
   pkg = require '../package'
-  kaita.commands.initialize.initStorages(pkg.dbVersion)
+  kobito.commands.initialize.initStorages(pkg.dbVersion)
   .then ->
     itemId = location.search.substr(1)
     console.log 'open id', itemId
