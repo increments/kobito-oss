@@ -44,6 +44,9 @@ script/build-win
 
 ## License
 
-Twemoji is CC-BY 4.0 https://github.com/twitter/twemoji
+Copyright © 2017 Increments Inc.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-MIT
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, COMPATIBILITY WITH ANY OTHER SOFTWARE OR PLATFORM, FUTURE UPDATE OR MAINTAINANCE, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE ICON OF THE SOFTWARE CAN ONLY BE USED AS A SYMBOL OF THE SOFWARE WITHOUT NO MODIFICATION AND THE LISENSOR RESERVES ALL RIGHTS AS TO THE ICON　OF THE SOFTWARE.
