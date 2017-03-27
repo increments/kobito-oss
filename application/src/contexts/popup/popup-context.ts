@@ -31,6 +31,7 @@ class Popup extends Arda.Context<d.Props, d.State, d.Template> {
     this.update(state => ({
       type: 'welcome',
       onClickNext: () => {
+        app.popup.close()
         next();
       }
     }));
