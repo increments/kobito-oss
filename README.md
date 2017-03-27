@@ -14,9 +14,9 @@ Changes to this repo will not be applied to released one.
 cp config.json.example config.json
 ```
 
-Optional: Get your own oauth cilent token and set them to `config.json` by https://qiita.com/settings/applications
+Optional: Get your own oauth cilent token and set them to `config.json` by https://qiita.com/settings/applications . Add all Permission to Qiita/Qiita:Team even if you use only qiita. (Failed to fetch team list). Callback domain is recommended to https://qiita.com .
 
-You can not login to Qiita without valid token.
+You can not login to Qiita/Qiita:Team without valid token.
 
 ## Development
 
