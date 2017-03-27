@@ -41,6 +41,8 @@ script/build-mac
 script/build-win
 ```
 
+We checked passing building on Mac only.
+
 ## License
 
 Copyright © 2017 Increments Inc.
