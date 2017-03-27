@@ -1,6 +1,6 @@
-# Kaita
+# Kobito
 
-Markdown Processor built on Electron
+Cross Platform Markdown Processor built on Electron based on Kobito for Windows.
 
 ## CAUTION
 
@@ -29,6 +29,7 @@ Development with file watch
 cd application
 yarn run watch
 ```
+
 ## Release build
 
 ```sh
