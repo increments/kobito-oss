@@ -9,4 +9,4 @@
 yarn install
 
 # Locate app.asar
-node_modules.bin/asar pack ../application/public browser/app.asar
+node_modules/.bin/asar pack ../application/public browser/app.asar
